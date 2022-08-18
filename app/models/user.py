@@ -23,7 +23,7 @@ users = Users.__table__
 
 class Menu1(Base):
         __tablename__ = 'menu1'
-        id =Column(Integer(),primary_key=True)
+        id =Column(Integer,primary_key=True)
         nombre= Column(String(255))
         descripcion= Column(String (255))
         relationship('Platillos', cascade="all,delete", backref=backref('menu1', cascade="all,delete"))

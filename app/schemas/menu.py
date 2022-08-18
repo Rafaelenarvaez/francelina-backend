@@ -3,9 +3,7 @@ from pydantic import BaseModel
 from typing import Optional
 
 class Menu(BaseModel):
-    id:str
     nombre:str
-    precio:str
     descripcion:str
     
     

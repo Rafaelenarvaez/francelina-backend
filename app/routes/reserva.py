@@ -52,7 +52,8 @@ def reserva(
 @create_reserva.post("/admin/reserva")
 def create_reserva_admin(reserva: Reserva_admin):
     new_reserva = {"zona": reserva.zona,
-                   "horas": reserva.horas, "capacidad": reserva.capacidad}
+                   "horas": reserva.horas, 
+                   "capacidad": reserva.capacidad}
     conn.execute(reservas_admin.insert().values(new_reserva))
     return
 
