@@ -41,6 +41,7 @@ def reserva(
             "telefeno": reserva.telefono, 
             "hora": reserva.hora, 
             "fecha": reserva.fecha,
+            "fecha de cumpleaños":reserva.nacimiento,
             "reservas_id": reserv['id']
         }
         result = conn.execute(reservas.insert().values(new_reserv))

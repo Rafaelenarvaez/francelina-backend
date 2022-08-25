@@ -8,3 +8,4 @@ class Reserva(BaseModel):
     telefono:str
     hora:str
     fecha:str
+    nacimiento: str 

@@ -9,7 +9,7 @@ from sqlalchemy import Integer, Table, Column, table, true, ForeignKey
 from sqlalchemy.orm import relationship, declarative_base, backref
 from sqlalchemy.sql.sqltypes import Integer, String
 from config.db import meta,engine 
-
+        
 
 Base = declarative_base()
 
@@ -40,7 +40,6 @@ class Platillos(Base):
 
 platillos = Platillos.__table__
 
-
 class Reservas(Base):
         __tablename__ = 'reservas'
         id = Column(Integer(), primary_key=True)
@@ -49,6 +48,7 @@ class Reservas(Base):
         telefeno = Column(String(255))
         hora = Column(String(255))
         fecha= Column(String(255))
+        nacimiento = Column(String(255))
         reservas_id = Column(Integer(), ForeignKey('reservas_admin.id'), nullable=False)
 reservas = Reservas.__table__
 
