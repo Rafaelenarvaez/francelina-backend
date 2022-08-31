@@ -4,8 +4,11 @@ from typing import Optional
 class Reserva(BaseModel):
     id:Optional[str]
     nombre:str
+    apellido : str
+    cedula:str
     email:str
     telefono:str
     hora:str
     fecha:str
-    nacimiento: str 
+    fecha_de_cumpleaños: str
+    

@@ -4,6 +4,7 @@ from routes.user import user
 from routes.auth import auth_routes
 from routes.reserva import create_reserva
 from routes.create_menu import create_menu
+
 from dotenv import load_dotenv
 from fastapi.staticfiles import StaticFiles
 app = FastAPI()
