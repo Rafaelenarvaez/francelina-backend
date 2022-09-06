@@ -20,7 +20,7 @@ credenciales = dotenv_values(".env")
 conf = ConnectionConfig(
     MAIL_USERNAME = credenciales["EMAIL"],
     MAIL_PASSWORD = credenciales["PASS"],
-    MAIL_FROM = "rafaelnarvaez1510@gmail.com",
+    MAIL_FROM = "litb890@gmail.com",
     MAIL_PORT = 587,
     MAIL_SERVER = "smtp.gmail.com",
     MAIL_TLS = True,
@@ -55,9 +55,14 @@ async def reserva(
     qr = reservas.select().where(reservas.c.reservas_id == reserv['id'], reservas.c.fecha == reserva.fecha)
     reserv_exists = conn.execute(qr).fetchall()
     
+    reserves_count = 0
+ 
+    if reserv_exists:
+        for r in reserv_exists:
+            reserves_count += r['numero_de_personas']
      
 
-    if len(reserv_exists) >= reserv['capacidad']:
+    if reserves_count >= reserv['capacidad']:
         return JSONResponse(
             status_code=status.HTTP_406_NOT_ACCEPTABLE,
             content={
@@ -70,7 +75,8 @@ async def reserva(
             "cedula":reserva.cedula,
             "email": reserva.email,
             "telefeno": reserva.telefono, 
-            "hora": reserva.hora, 
+            "numero_de_personas": reserva.numero_de_personas, 
+            "hora": reserv['horas'], 
             "fecha": reserva.fecha,
             "fecha_de_cumpleaños":reserva.fecha_de_cumpleaños,
             "reservas_id": reserv['id']
@@ -78,14 +84,14 @@ async def reserva(
         result = conn.execute(reservas.insert().values(new_reserv))
         
 
-    message = MessageSchema(
-        subject="Confirmacion de reserva",
-        recipients=[reserva.email],  # List of recipients, as many as you can pass 
-        template_body=new_reserv,
-    )
+    # message = MessageSchema(
+    #     subject="Confirmacion de reserva",
+    #     recipients=[reserva.email],  # List of recipients, as many as you can pass 
+    #     template_body=new_reserv,
+    # )
 
-    fm = FastMail(conf)
-    await fm.send_message(message, template_name="email.html")
+    # fm = FastMail(conf)
+    # await fm.send_message(message, template_name="email.html")
     return {"message" : "reserva creada exitosamente" }
 
 
@@ -98,15 +104,49 @@ def create_reserva_admin(reserva: Reserva_admin):
     return {"message" : 'reserva creada'}
 
 @create_reserva.delete("/admin/delete_reserva")
-def delete_reserva(cedula:str):
-    conn.execute(reservas.delete().where(reservas.c.cedula == cedula))
-    return "success"
+def delete_reserva(id: int):
+    reserve_exists = conn.execute(reservas.select().where(reservas.c.reservas_id == id))
+    if not reserve_exists: 
+        return JSONResponse(
+            status_code=status.HTTP_404_NOT_FOUND,
+            content={
+                'message': 'Esta reserva no existe'
+            })
+    else:
+        conn.execute(reservas.delete().where(reservas.c.id == id))
 
+        return {'message': 'Reserva eliminada correctamente'}
 
 
 @create_reserva.get("/reservas")
-def get_reservas():
-    return conn.execute(reservas_admin.select()).fetchall()
+def get_reservas(
+    nested: bool
+):
+    if nested:
+        reservs_admin = conn.execute(reservas_admin.select()).fetchall()
+
+        if not reservs_admin:
+            return []
+        
+        reserv_obj = {}
+
+        reserv_lst = []
+
+        for r in reservs_admin:
+            reservs = conn.execute(reservas.select().where(reservas.c.reservas_id == r['id']))
+
+            if reservs:
+                reserv_obj.__setitem__(r['horas'], [{**dict(i), 'zona': r['zona']} for i in reservs])
+            else:
+                reserv_obj.__setitem__(r['horas'], [])
+
+        reserv_lst.append(reserv_obj)
+
+        return reserv_lst
+    
+    else:
+        return conn.execute(reservas.select()).fetchall()
+
 
 @create_reserva.post("/validar_fecha")
 def validar(fecha: datetime,

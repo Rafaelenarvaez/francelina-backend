@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, MetaData
 
-engine = create_engine  ("mysql+pymysql://rafael:r15a151!@localhost:3306/admin-francelina")
+engine = create_engine  ("mysql+pymysql://root:@localhost:3306/francelina")
 
 meta = MetaData()
 

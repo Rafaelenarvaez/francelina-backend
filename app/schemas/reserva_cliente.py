@@ -11,4 +11,5 @@ class Reserva(BaseModel):
     hora:str
     fecha:str
     fecha_de_cumpleaños: str
+    numero_de_personas: int
     

@@ -54,57 +54,87 @@ def get_images():
         return conn.execute(galeria.select()).fetchall()
 
 
-@create_menu.put("/admin/update_menu")
+@create_menu.get("/platos")
+def get_platos(
+    nested: bool
+):
+    if nested:
+        menus = conn.execute(menu1.select()).fetchall()
+
+        if not menus:
+            return []
+        
+        platillos_obj = {}
+
+        platillos_lst = []
+
+        for m in menus:
+            platos = conn.execute(platillos.select().where(platillos.c.categoria_id == m['id']))
+
+            if platos:
+                platillos_obj.__setitem__(m['nombre'], [dict(i) for i in platos])
+            else:
+                platillos_obj.__setitem__(m['nombre'], [])
+
+        platillos_lst.append(platillos_obj)
+
+        return platillos_lst
+    
+    else:
+        return conn.execute(platillos.select()).fetchall()
+
+
+
+@create_menu.post("/admin/update_menu")
 async def update_menu(
-    categoria: str =Form(...),
+    categoria: str,
     nombre: str = Form(...),
     precio: str = Form(...),
     descripcion: str = Form(...),
-    file:UploadFile=File(...)
+    # file:UploadFile=File(...)
     ):
 
 
-    FILEPATH= "./imagenes/menu/"
-    filename=file.filename
-    extencion = filename.split(".")[1]
+    # FILEPATH= "./imagenes/menu/"
+    # filename=file.filename
+    # extencion = filename.split(".")[1]
 
-    if extencion not in ["png","jpg"]:
-        return {"status": "error" , "detail": "Extencion no permitida"}
+    # if extencion not in ["png","jpg"]:
+    #     return {"status": "error" , "detail": "Extencion no permitida"}
 
-    ide = random.randint(1,100)
+    # ide = random.randint(1,100)
 
-    id= str(ide) + "." + extencion
-    generated_name = FILEPATH + id
-    file_content = await file.read()
-
+    # id= str(ide) + "." + extencion
+    # generated_name = FILEPATH + id
+    # file_content = await file.read()
+    print('aqui')
     qr = menu1.select().where(menu1.c.nombre == categoria)
-    reserv = conn.execute(qr).fetchone()
+    menu = conn.execute(qr).fetchone()
     
-    if not reserv:
+    if not menu:
          return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={
                 'msg': 'Esta categoria no existe'
             })
 
-    qr = platillos.select().where(platillos.c.categoria_id == reserv['id'])
-    reserv_exists = conn.execute(qr).fetchone()
+    qr = platillos.select().where(platillos.c.categoria_id == menu['id'])
 
-    if reserv_exists:
-        new_menu={
+    new_menu={
         "nombre": nombre, 
         "precio": precio,
         "descripcion": descripcion, 
-        "imagen":generated_name, 
-        "categoria_id": reserv['id']
-        }
-        rp = conn.execute(platillos.update().values(new_menu))
-        print(rp)
-   
-        with open (generated_name, "wb") as file:
-            file.write(file_content)
+        # "imagen": generated_name, 
+        "categoria_id": menu['id']
+    }
+
+    rp = conn.execute(platillos.insert().values(new_menu))
+    print(rp)
+
+    # with open (generated_name, "wb") as file:
+    #     file.write(file_content)
     
-    return print("success")
+    return {'msg': 'Esta categoria no existe'}
 
 @create_menu.delete("/admin/delate")
 def borrar_categoria(nombre_categoria:str):

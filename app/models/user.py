@@ -26,7 +26,7 @@ class Menu1(Base):
         id =Column(Integer,primary_key=True)
         nombre= Column(String(255))
         descripcion= Column(String (255))
-        relationship('Platillos', cascade="all,delete", backref=backref('menu1', cascade="all,delete"))
+        relationship('Platillos', backref=backref('menu1', cascade="all,delete"))
 menu1 = Menu1.__table__
 
 class Platillos(Base):
@@ -35,8 +35,8 @@ class Platillos(Base):
         nombre= Column(String(255))
         descripcion = Column(String(255))
         precio = Column(Integer)
-        categoria_id = Column(Integer(), ForeignKey('menu1.id'), nullable=False)
-        imagen = Column(String(255))
+        categoria_id = Column(Integer(), ForeignKey('menu1.id', ondelete="CASCADE"), nullable=False)
+        imagen = Column(String(255), nullable=True)
 
 platillos = Platillos.__table__
 
@@ -69,6 +69,5 @@ class Galeria(Base):
         id= Column(Integer(), primary_key=True)
         ruta= Column ( String(255))
 galeria= Galeria.__table__
-
 
 Base.metadata.create_all(engine)
