@@ -5,5 +5,6 @@ from datetime import  time
 class Reserva_admin(BaseModel):
     id:Optional[str]
     zona:str
-    horas:time
+    hora1:time
+    hora2:time
     capacidad:int

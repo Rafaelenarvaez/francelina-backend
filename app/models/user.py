@@ -4,8 +4,7 @@ import email
 from numbers import Integral
 from re import S
 from typing import Collection
-from xmlrpc.client import Boolean
-from sqlalchemy import Integer, Table, Column, table, true, ForeignKey, Time
+from sqlalchemy import Integer, Table, Column, table, true, ForeignKey, Time, Boolean
 from sqlalchemy.orm import relationship, declarative_base, backref
 from sqlalchemy.sql.sqltypes import Integer, String
 from config.db import meta,engine 
@@ -49,6 +48,7 @@ class Reservas(Base):
         email= Column(String(255))
         telefeno = Column(String(255))
         hora = Column(String(255))
+        zona = Column(String(255))
         fecha= Column(String(255))
         fecha_de_cumpleaños = Column(String(255))
         numero_de_personas = Column(Integer)
@@ -59,9 +59,12 @@ class Reservas_admin(Base):
         __tablename__ = 'reservas_admin'
         id=Column(Integer(), primary_key=True)
         zona=Column(String(255))
-        horas= Column(Time)
+        hora1= Column(Time)
+        hora2= Column(Time)
         capacidad=Column(Integer())
+        max_capacity= Column(Boolean, default=False)
         relationship('Reservas', cascade="all,delete", backref=backref('reservas_admin', cascade="all,delete"))
+
 reservas_admin = Reservas_admin.__table__
 
 class Galeria(Base):
@@ -69,5 +72,8 @@ class Galeria(Base):
         id= Column(Integer(), primary_key=True)
         ruta= Column ( String(255))
 galeria= Galeria.__table__
+
+
+
 
 Base.metadata.create_all(engine)
