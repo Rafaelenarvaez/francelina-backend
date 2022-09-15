@@ -139,7 +139,6 @@ def get_platos(
 
 @create_menu.put("/admin/update_menu")
 async def update_menu(
-    categoria: str,
     ides: str = Form(...),
     nombre: str = Form(...),
     precio: str = Form(...),
@@ -175,7 +174,7 @@ async def update_menu(
     with open (generated_name, "wb") as file:
      file.write(file_content)
     
-    return {'msg': 'Esta categoria no existe'}
+    return {'msg': 'Platillo actualizado'}
 
 @create_menu.delete("/admin/delate")
 def borrar_categoria(nombre_categoria:str):
