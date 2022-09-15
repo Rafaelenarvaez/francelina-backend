@@ -24,6 +24,58 @@ async def create_categorias(menu:Menu):
     print(result)
     return "success"
 
+@create_menu.post("/create_platillo")
+async def create( 
+    categoria: str,
+    nombre: str = Form(...),
+    precio: str = Form(...),
+    descripcion: str = Form(...),
+    file:UploadFile=File(...)
+    ):
+    
+    
+    FILEPATH= "./imagenes/menu/"
+    filename=file.filename
+    extencion = filename.split(".")[1]
+
+    if extencion not in ["png","jpg"]:
+        return {"status": "error" , "detail": "Extencion no permitida"}
+
+    ide = random.randint(1,100)
+
+    id= str(ide) + "." + extencion
+    generated_name = FILEPATH + id
+    file_content = await file.read()
+    
+
+    qr = menu1.select().where(menu1.c.nombre == categoria)
+    menu = conn.execute(qr).fetchone()
+    
+    if not menu:
+         return JSONResponse(
+            status_code=status.HTTP_404_NOT_FOUND,
+            content={
+                'msg': 'Esta categoria no existe'
+            })
+
+    qr = platillos.select().where(platillos.c.categoria_id == menu['id'])
+
+    new_menu={
+        "nombre": nombre, 
+        "precio": precio,
+        "descripcion": descripcion, 
+        "imagen": generated_name, 
+        "categoria_id": menu['id']
+    }
+
+    rp = conn.execute(platillos.insert().values(new_menu))
+    print(rp)
+
+    with open (generated_name, "wb") as file:
+     file.write(file_content)
+    
+    return {'msg': 'platillo creado con exito'}
+
 
 @create_menu.post("/uploadfile/galeria")
 async def uploadfile_post(file:UploadFile=File(...)):
@@ -85,54 +137,43 @@ def get_platos(
 
 
 
-@create_menu.post("/admin/update_menu")
+@create_menu.put("/admin/update_menu")
 async def update_menu(
     categoria: str,
+    ides: str = Form(...),
     nombre: str = Form(...),
     precio: str = Form(...),
     descripcion: str = Form(...),
-    # file:UploadFile=File(...)
+    file:UploadFile=File(...)
     ):
 
 
-    # FILEPATH= "./imagenes/menu/"
-    # filename=file.filename
-    # extencion = filename.split(".")[1]
+    FILEPATH= "./imagenes/menu/"
+    filename=file.filename
+    extencion = filename.split(".")[1]
 
-    # if extencion not in ["png","jpg"]:
-    #     return {"status": "error" , "detail": "Extencion no permitida"}
+    if extencion not in ["png","jpg"]:
+        return {"status": "error" , "detail": "Extencion no permitida"}
 
-    # ide = random.randint(1,100)
+    ide = random.randint(1,100)
 
-    # id= str(ide) + "." + extencion
-    # generated_name = FILEPATH + id
-    # file_content = await file.read()
-    print('aqui')
-    qr = menu1.select().where(menu1.c.nombre == categoria)
-    menu = conn.execute(qr).fetchone()
+    id= str(ide) + "." + extencion
+    generated_name = FILEPATH + id
+    file_content = await file.read()
+
     
-    if not menu:
-         return JSONResponse(
-            status_code=status.HTTP_404_NOT_FOUND,
-            content={
-                'msg': 'Esta categoria no existe'
-            })
-
-    qr = platillos.select().where(platillos.c.categoria_id == menu['id'])
-
     new_menu={
         "nombre": nombre, 
         "precio": precio,
         "descripcion": descripcion, 
-        # "imagen": generated_name, 
-        "categoria_id": menu['id']
+        "imagen": generated_name, 
     }
 
-    rp = conn.execute(platillos.insert().values(new_menu))
+    rp = conn.execute(platillos.update().values(new_menu).where(platillos.c.id == ides))
     print(rp)
 
-    # with open (generated_name, "wb") as file:
-    #     file.write(file_content)
+    with open (generated_name, "wb") as file:
+     file.write(file_content)
     
     return {'msg': 'Esta categoria no existe'}
 

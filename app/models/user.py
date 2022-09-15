@@ -3,10 +3,12 @@ from calendar import c
 import email
 from numbers import Integral
 from re import S
+from tkinter import NUMERIC
 from typing import Collection
+from unicodedata import numeric
 from sqlalchemy import Integer, Table, Column, table, true, ForeignKey, Time, Boolean
 from sqlalchemy.orm import relationship, declarative_base, backref
-from sqlalchemy.sql.sqltypes import Integer, String
+from sqlalchemy.sql.sqltypes import Integer, String, Numeric
 from config.db import meta,engine 
         
 
@@ -33,7 +35,7 @@ class Platillos(Base):
         id= Column(Integer(), primary_key=True)
         nombre= Column(String(255))
         descripcion = Column(String(255))
-        precio = Column(Integer)
+        precio = Column(Numeric(precision=8, scale=2))
         categoria_id = Column(Integer(), ForeignKey('menu1.id', ondelete="CASCADE"), nullable=False)
         imagen = Column(String(255), nullable=True)
 
@@ -72,7 +74,6 @@ class Galeria(Base):
         id= Column(Integer(), primary_key=True)
         ruta= Column ( String(255))
 galeria= Galeria.__table__
-
 
 
 
