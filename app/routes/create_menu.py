@@ -88,26 +88,27 @@ def get_platos(
 @create_menu.post("/admin/update_menu")
 async def update_menu(
     categoria: str,
-    nombre: str = Form(...),
-    precio: str = Form(...),
-    descripcion: str = Form(...),
-    # file:UploadFile=File(...)
+    nombre: str,
+    precio: str,
+    descripcion: str,
+    file:UploadFile=File(...)
     ):
 
 
-    # FILEPATH= "./imagenes/menu/"
-    # filename=file.filename
-    # extencion = filename.split(".")[1]
+    FILEPATH= "./imagenes/menu/"
+    filename=file.filename
+    extencion = filename.split(".")[1]
 
-    # if extencion not in ["png","jpg"]:
-    #     return {"status": "error" , "detail": "Extencion no permitida"}
+    if extencion not in ["png","jpg"]:
+        return {"status": "error" , "detail": "Extencion no permitida"}
 
-    # ide = random.randint(1,100)
+    ide = random.randint(1,100)
 
-    # id= str(ide) + "." + extencion
-    # generated_name = FILEPATH + id
-    # file_content = await file.read()
-    print('aqui')
+    id= str(ide) + "." + extencion
+    generated_name = FILEPATH + id
+    db_file_name = "/imagenes/menu/" + id
+    file_content = await file.read()
+
     qr = menu1.select().where(menu1.c.nombre == categoria)
     menu = conn.execute(qr).fetchone()
     
@@ -124,15 +125,15 @@ async def update_menu(
         "nombre": nombre, 
         "precio": precio,
         "descripcion": descripcion, 
-        # "imagen": generated_name, 
+        "imagen": db_file_name, 
         "categoria_id": menu['id']
     }
 
     rp = conn.execute(platillos.insert().values(new_menu))
     print(rp)
 
-    # with open (generated_name, "wb") as file:
-    #     file.write(file_content)
+    with open (generated_name, "wb") as file:
+        file.write(file_content)
     
     return {'msg': 'Esta categoria no existe'}
 

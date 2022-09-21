@@ -75,5 +75,4 @@ galeria= Galeria.__table__
 
 
 
-
 Base.metadata.create_all(engine)
