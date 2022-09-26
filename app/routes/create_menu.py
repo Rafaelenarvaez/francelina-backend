@@ -172,7 +172,7 @@ async def update_menu(
     print(rp)
 
     with open (generated_name, "wb") as file:
-     file.write(file_content)
+        file.write(file_content)
     
     return {'msg': 'Platillo actualizado'}
 
