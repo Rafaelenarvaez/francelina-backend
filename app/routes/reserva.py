@@ -2,6 +2,8 @@ from ctypes import Union
 from datetime import datetime, time, date
 from pathlib import Path
 import re
+from typing import List
+from unittest import result
 from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
 from pydantic import FilePath
@@ -12,6 +14,8 @@ from schemas.reserva_admin import Reserva_admin
 from schemas.reserva_cliente import Reserva
 from fastapi_mail import FastMail, MessageSchema,ConnectionConfig
 from dotenv import dotenv_values
+from models.user import zonas 
+from models.user import reservas_zona_aso
 
 
 credenciales = dotenv_values(".env")
@@ -56,7 +60,7 @@ async def reserva(
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={
-                'msg': 'Esta reserva ya existe'
+                'msg': 'Capacidad maxima'
             })
 
     if reserva.hora > reserv['hora2'] or reserva.hora < reserv['hora1']:
@@ -66,7 +70,7 @@ async def reserva(
                 'msg': 'Hora fuera de rango'
             })
 
-
+    
     qr = reservas.select().where(reservas.c.reservas_id == reserv['id'], reservas.c.fecha == reserva.fecha, reservas.c.zona == reserva.zona )
     reserv_exists = conn.execute(qr).fetchall()
     
@@ -118,12 +122,41 @@ async def reserva(
 
 
 @create_reserva.post("/admin/reserva") 
-def create_reserva_admin(reserva: Reserva_admin):
-    new_reserva = {"zona": reserva.zona,
+def create_reserva_admin(reserva: Reserva_admin, nombre_zona:List[str]):
+
+    new_reserva = {
                    "hora1": reserva.hora1,
                    "hora2":reserva.hora2,
                    "capacidad": reserva.capacidad}
-    conn.execute(reservas_admin.insert().values(new_reserva))
+
+    reser_id = conn.execute(reservas_admin.insert().values(new_reserva)).inserted_primary_key
+
+    print(reser_id[0])
+    
+    zonas_ids = []
+
+    if len(nombre_zona) == 0:
+         return JSONResponse(
+            status_code=status.HTTP_406_NOT_ACCEPTABLE,
+            content={
+                'msg': 'Zonas vacias'
+            })
+    else: 
+        for n in nombre_zona: 
+            result = conn.execute(zonas.select().where(zonas.c.nombre == n )).fetchone()
+            if not result:
+                conn.execute(zonas.insert().values(nombre_zona)).inserted_primary_key
+                zona_id = conn.execute(zonas.select().where(zonas.c.nombre == n )).fetchone()
+
+                zonas_ids.append(zona_id[0])
+    for id in zonas_ids:
+        new_ids={
+            "id_reservas_admin":reser_id,
+            "id_zonas":id
+        }
+        conn.execute(reservas_zona_aso.insert().values(new_ids))
+  
+
     return {"message" : 'reserva creada'}
 
 @create_reserva.delete("/admin/delete_reserva")
