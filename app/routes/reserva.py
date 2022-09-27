@@ -54,18 +54,18 @@ async def reserva(
 
     if reserv['max_capacity'] ==  True:
         return JSONResponse(
-            status_code=status.HTTP_404_NOT_FOUND,
-            content={
-                'msg': 'Esta reserva ya existe'
-            })
-
-    if reserva.hora > reserv['hora2'] or reserva.hora < reserv['hora1']:
-        return JSONResponse(
             status_code=status.HTTP_406_NOT_ACCEPTABLE,
             content={
                 'msg': 'Hora fuera de rango'
             })
 
+    if reserva.hora > reserv['hora2'] or reserva.hora < reserv['hora1']:
+        print('error')
+        return JSONResponse(
+            status_code=status.HTTP_406_NOT_ACCEPTABLE,
+            content={
+                'msg': 'Hora fuera de rango'
+            })
 
     qr = reservas.select().where(reservas.c.reservas_id == reserv['id'], reservas.c.fecha == reserva.fecha, reservas.c.zona == reserva.zona )
     reserv_exists = conn.execute(qr).fetchall()
@@ -77,10 +77,11 @@ async def reserva(
             reserves_count += r['numero_de_personas']
 
         reserves_count += reserva.numero_de_personas
-        print('reserve count', reserves_count)
 
     else:
         reserves_count = reserva.numero_de_personas
+
+    print(reserves_count)
 
     if reserves_count > reserv['capacidad']:
         return JSONResponse(
@@ -95,6 +96,7 @@ async def reserva(
             "cedula":reserva.cedula,
             "email": reserva.email,
             "telefeno": reserva.telefono, 
+            "zona": reserva.zona,
             "numero_de_personas": reserva.numero_de_personas, 
             "hora": reserva.hora, 
             "fecha": reserva.fecha,
@@ -106,14 +108,14 @@ async def reserva(
     if (reserves_count + new_reserv['numero_de_personas']) >= reserv['capacidad']:
         conn.execute(reservas_admin.update().values(max_capacity=True))
 
-    message = MessageSchema(
-         subject="Confirmacion de reserva",
-         recipients=[reserva.email, credenciales["EMAIL"]],  # List of recipients, as many as you can pass 
-        template_body=new_reserv,
-     )
+    # message = MessageSchema(
+    #      subject="Confirmacion de reserva",
+    #      recipients=[reserva.email, credenciales["EMAIL"]],  # List of recipients, as many as you can pass 
+    #     template_body=new_reserv,
+    #  )
    
-    fm = FastMail(conf)
-    await fm.send_message(message, template_name="email.html")
+    # fm = FastMail(conf)
+    # await fm.send_message(message, template_name="email.html")
     return {"message" : "reserva creada exitosamente" }
 
 

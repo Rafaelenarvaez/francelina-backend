@@ -27,9 +27,9 @@ async def create_categorias(menu:Menu):
 @create_menu.post("/create_platillo")
 async def create( 
     categoria: str,
-    nombre: str = Form(...),
-    precio: str = Form(...),
-    descripcion: str = Form(...),
+    nombre: str,
+    precio: str,
+    descripcion: str,
     file:UploadFile=File(...)
     ):
     
@@ -45,6 +45,7 @@ async def create(
 
     id= str(ide) + "." + extencion
     generated_name = FILEPATH + id
+    db_file_name = "/imagenes/menu/" + id
     file_content = await file.read()
     
 
@@ -64,7 +65,7 @@ async def create(
         "nombre": nombre, 
         "precio": precio,
         "descripcion": descripcion, 
-        "imagen": generated_name, 
+        "imagen": db_file_name, 
         "categoria_id": menu['id']
     }
 
