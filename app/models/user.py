@@ -51,7 +51,6 @@ class Reservas(Base):
         telefeno = Column(String(255))
         hora = Column(String(255))
         zona= Column(String(255))
-        zona_id = Column(Integer(), ForeignKey('zonas.id'), nullable=False)
         fecha= Column(String(255))
         fecha_de_cumpleaños = Column(String(255))
         numero_de_personas = Column(Integer)
@@ -90,6 +89,5 @@ class Galeria(Base):
         id= Column(Integer(), primary_key=True)
         ruta= Column ( String(255))
 galeria= Galeria.__table__
-
 
 Base.metadata.create_all(engine)

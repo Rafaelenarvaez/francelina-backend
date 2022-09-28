@@ -1,6 +1,7 @@
 from email.mime import image
 from hashlib import new
 import imp
+import os
 import random
 from os import getcwd
 from turtle import update
@@ -73,38 +74,76 @@ async def create(
     print(rp)
 
     with open (generated_name, "wb") as file:
-     file.write(file_content)
+        file.write(file_content)
     
     return {'msg': 'platillo creado con exito'}
+
+
+@create_menu.delete("/img/delete")
+async def remove_img(
+    id: int
+):
+    qr = galeria.select().where(galeria.c.id == id)
+    img = conn.execute(qr).fetchone()
+    
+    if not img:
+         return JSONResponse(
+            status_code=status.HTTP_404_NOT_FOUND,
+            content={
+                'msg': 'Esta imagen no existe'
+            })
+
+    
+    if os.path.isfile('.' + img['ruta']):
+        os.remove('.' + img['ruta'])
+
+    conn.execute(galeria.delete().where(galeria.c.id == id))
+
+    return {
+        'msg': 'imagen eliminada exitosamente'
+    }
+    
+
 
 
 @create_menu.post("/uploadfile/galeria")
 async def uploadfile_post(file:UploadFile=File(...)):
 
-    FILEPATH= "./imagenes/"
+    FILEPATH= "./imagenes/galery/"
     filename=file.filename
     extencion = filename.split(".")[1]
 
+    
+
     if extencion not in ["png","jpg"]:
-        return {"status": "error" , "detail": "Extencion no permitida"}
+
+       return JSONResponse(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            content={
+                'message': 'Extension no permitida'
+        })
 
     ide = random.randint(1,100)
     id= str(ide) + "." + extencion
     generated_name = FILEPATH + id
+    db_file_name = "/imagenes/galery/" + id
     file_content = await file.read()
 
-    new_foto={"ruta":generated_name}
+    new_foto={"ruta":db_file_name}
     conn.execute(galeria.insert().values(new_foto))
 
 
     with open (generated_name, "wb") as file:
         file.write(file_content)
-    return"success"
+
+    return {
+        'msg': 'success'
+    }
 
 
 @create_menu.get("/get_img")
 def get_images():
-        return conn.execute(galeria.select()).fetchall()
+        return [dict(i) for i in conn.execute(galeria.select()).fetchall()]
 
 
 @create_menu.get("/platos")
