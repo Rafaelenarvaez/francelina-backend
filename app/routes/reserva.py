@@ -108,6 +108,7 @@ async def reserva(
             "hora": reserva.hora, 
             "fecha": reserva.fecha,
             "fecha_de_cumpleaños":reserva.fecha_de_cumpleaños,
+            "nota":reserva.nota,
             "reservas_id": reserv['id']
         }
         print('hasta aqui')
@@ -148,6 +149,8 @@ def create_reserva_admin(reserva: Reserva_admin, nombre_zona:List[str]):
     else: 
         for n in nombre_zona: 
             result = conn.execute(zonas.select().where(zonas.c.nombre == n )).fetchone()
+            if result:
+                zonas_ids.append(result['id'])
             if not result:
                 conn.execute(zonas.insert().values({ 'nombre': n})).inserted_primary_key
                 zona_id = conn.execute(zonas.select().where(zonas.c.nombre == n )).fetchone()
