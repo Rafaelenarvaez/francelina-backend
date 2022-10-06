@@ -65,7 +65,7 @@ class Reservas_admin(Base):
         capacidad=Column(Integer())
         max_capacity= Column(Boolean, default=False)
         zonas= relationship('zonas', secondary ='reservas_zona_aso', backref='zonas')
-        relationship('Reservas', cascade="all,delete", backref=backref('reservas_admin', cascade="all,delete"))
+        relationship('Reservas', cascade="all, delete-orphan", backref=backref('reservas_admin'))
 
 
 reservas_admin = Reservas_admin.__table__

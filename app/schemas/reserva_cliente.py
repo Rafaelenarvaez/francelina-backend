@@ -3,6 +3,7 @@ from sqlite3 import Time
 from pydantic import BaseModel
 from typing import Optional
 from datetime import  time
+
 class Reserva(BaseModel):
     id:Optional[str]
     nombre:str
