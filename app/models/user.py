@@ -54,6 +54,8 @@ class Reservas(Base):
         fecha= Column(String(255))
         fecha_de_cumpleaños = Column(String(255))
         numero_de_personas = Column(Integer)
+        nota = Column(String(500
+        ))
         reservas_id = Column(Integer(), ForeignKey('reservas_admin.id'), nullable=False)
 reservas = Reservas.__table__
 
@@ -89,5 +91,7 @@ class Galeria(Base):
         id= Column(Integer(), primary_key=True)
         ruta= Column ( String(255))
 galeria= Galeria.__table__
+
+
 
 Base.metadata.create_all(engine)
