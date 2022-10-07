@@ -128,6 +128,53 @@ async def reserva(
     return {"message" : "reserva creada exitosamente" }
 
 
+@create_reserva.get("/max_capacity")
+async def reserva(
+        id: int,
+        zona: str,
+        fecha: str,
+        numero_de_personas: int
+):
+    qr = reservas_admin.select().where(reservas_admin.c.id == id)
+    reserv = conn.execute(qr).fetchone()
+
+    if not reserv:
+        return JSONResponse(
+            status_code=status.HTTP_404_NOT_FOUND,
+            content={
+                'msg': 'Esta reserva admin no existe'
+            })
+
+    if reserv['max_capacity'] ==  True:
+        return {
+            "max_capacity": True
+        }
+
+    
+    qr = reservas.select().where(reservas.c.reservas_id == reserv['id'], reservas.c.fecha == fecha, reservas.c.zona == zona )
+    reserv_exists = conn.execute(qr).fetchall()
+    
+    reserves_count = 0
+    
+    if reserv_exists:
+        for r in reserv_exists:
+            reserves_count += r['numero_de_personas']
+
+        reserves_count += numero_de_personas
+
+    else:
+        reserves_count = numero_de_personas
+
+    if reserves_count > reserv['capacidad']:
+        return {
+            "max_capacity": True
+        }
+    else:
+        return {
+            "max_capacity": False
+        }
+
+
 @create_reserva.post("/admin/reserva") 
 def create_reserva_admin(reserva: Reserva_admin, nombre_zona:List[str]):
 
@@ -237,8 +284,6 @@ def get_horas():
     if not reservs_admin:
         return []
     
-    reserv_admin_obj = {}
-
     reserv_admin_lst = []
 
 
