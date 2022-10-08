@@ -39,7 +39,7 @@ async def create(
     filename=file.filename
     extencion = filename.split(".")[1]
 
-    if extencion not in ["png","jpg"]:
+    if extencion not in ["png","JPG","jpg","PNG"]:
         return {"status": "error" , "detail": "Extencion no permitida"}
 
     ide = random.randint(1,100)
