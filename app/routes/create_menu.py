@@ -22,7 +22,6 @@ create_menu = APIRouter()
 async def create_categorias(menu:Menu):
     new_categoria={"nombre":menu.nombre,"descripcion":menu.descripcion}
     result =conn.execute(menu1.insert().values(new_categoria))
-    print(result)
     return "success"
 
 @create_menu.post("/create_platillo")
@@ -71,8 +70,6 @@ async def create(
     }
 
     rp = conn.execute(platillos.insert().values(new_menu))
-    print(rp)
-
     with open (generated_name, "wb") as file:
         file.write(file_content)
     
@@ -102,8 +99,6 @@ async def remove_img(
     return {
         'msg': 'imagen eliminada exitosamente'
     }
-    
-
 
 
 @create_menu.post("/uploadfile/galeria")
@@ -151,30 +146,28 @@ def get_platos(
     nested: bool
 ):
     if nested:
-        menus = conn.execute(menu1.select()).fetchall()
+        menu = conn.execute(menu1.select()).fetchall()
 
-        if not menus:
+        if not menu:
             return []
         
-        platillos_obj = {}
+        menu_lst = []
 
-        platillos_lst = []
+        for r in menu:
 
-        for m in menus:
-            platos = conn.execute(platillos.select().where(platillos.c.categoria_id == m['id']))
-
-            if platos:
-                platillos_obj.__setitem__(m['nombre'], [dict(i) for i in platos])
+            dishes = conn.execute(platillos.select().where(platillos.c.categoria_id == r['id']))
+            
+            if dishes:
+                dish_obj = {**dict(r), 'platillos': [{**dict(i)} for i in dishes]}
             else:
-                platillos_obj.__setitem__(m['nombre'], [])
+                dish_obj = {**dict(r), 'platillos': []}
 
-        platillos_lst.append(platillos_obj)
+            menu_lst.append(dish_obj)
 
-        return platillos_lst
+        return menu_lst
     
     else:
         return conn.execute(platillos.select()).fetchall()
-
 
 
 @create_menu.put("/admin/update_menu")
@@ -209,7 +202,6 @@ async def update_menu(
     }
 
     rp = conn.execute(platillos.update().values(new_menu).where(platillos.c.id == ides))
-    print(rp)
 
     with open (generated_name, "wb") as file:
         file.write(file_content)
@@ -219,4 +211,10 @@ async def update_menu(
 @create_menu.delete("/admin/delate")
 def borrar_categoria(nombre_categoria:str):
     conn.execute(menu1.delete().where(menu1.c.nombre == nombre_categoria))
-    return "success"
+    return { 'message': "success"}
+
+
+@create_menu.delete("/platos/delete")
+def borrar_plato(id: int):
+    conn.execute(platillos.delete().where(platillos.c.id == id))
+    return { 'message': "success" }

@@ -57,7 +57,6 @@ async def reserva(
             })
 
     if reserv['max_capacity'] ==  True:
-        print('aca 1')
         return JSONResponse(
             status_code=status.HTTP_406_NOT_ACCEPTABLE,
             content={
@@ -86,10 +85,8 @@ async def reserva(
     else:
         reserves_count = reserva.numero_de_personas
 
-    print(reserves_count)
 
     if reserves_count > reserv['capacidad']:
-        print('aca 2')
 
         return JSONResponse(
             status_code=status.HTTP_406_NOT_ACCEPTABLE,
@@ -111,7 +108,6 @@ async def reserva(
             "nota":reserva.nota,
             "reservas_id": reserv['id']
         }
-        print('hasta aqui')
         result = conn.execute(reservas.insert().values(new_reserv))
         
     if (reserves_count + new_reserv['numero_de_personas']) > reserv['capacidad']:
@@ -179,9 +175,10 @@ async def reserva(
 def create_reserva_admin(reserva: Reserva_admin, nombre_zona:List[str]):
 
     new_reserva = {
-                   "hora1": reserva.hora1,
-                   "hora2":reserva.hora2,
-                   "capacidad": reserva.capacidad}
+        "hora1": reserva.hora1,
+        "hora2":reserva.hora2,
+        "capacidad": reserva.capacidad
+    }
 
     reser_id = conn.execute(reservas_admin.insert().values(new_reserva)).inserted_primary_key[0]
 
@@ -229,7 +226,6 @@ def delete_reserva(id: int):
 @create_reserva.delete("/admin/delete_reserva_admin")
 def delete_reserva(id: int):
     reserve_exists = conn.execute(reservas_admin.select().where(reservas_admin.c.id == id))
-    print(reserve_exists)
     if not reserve_exists: 
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -251,22 +247,20 @@ def get_reservas(
         if not reservs_admin:
             return []
         
-        reserv_obj = {}
-
-        reserv_lst = []
+        reserv_admin_lst = []
 
         for r in reservs_admin:
+
             reservs = conn.execute(reservas.select().where(reservas.c.reservas_id == r['id']))
             
-
             if reservs:
-                reserv_obj.__setitem__(str(r['hora1']) + ' a ' + str(r['hora2']), [{**dict(i)} for i in reservs])
+                reserv_obj = {**dict(r), 'reservas': [{**dict(i)} for i in reservs]}
             else:
-                reserv_obj.__setitem__(str(r['hora1']) + ' a ' + str(r['hora2']), [])
+                reserv_obj = {**dict(r), 'reservas': []}
 
-        reserv_lst.append(reserv_obj)
+            reserv_admin_lst.append(reserv_obj)
 
-        return reserv_lst
+        return reserv_admin_lst
     
     else:
         return conn.execute(reservas.select()).fetchall()

@@ -20,5 +20,4 @@ def create_user(user:User):
         new_user={"name": user.name, "email":user.email}
         new_user["password"]= f.encrypt(user.password.encode("utf-8"))
         result = conn.execute(users.insert().values(new_user))
-        print (result)
         return 

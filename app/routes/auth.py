@@ -17,11 +17,9 @@ auth_routes = APIRouter()
 
 @auth_routes.post("/admin")
 def admin(admin:User, id:str):
-    print(admin.dict())
     return "success"
 
 @auth_routes.get("/Admin/{id}")
 def Admin(id: str):
-    print(id)
     return
 
