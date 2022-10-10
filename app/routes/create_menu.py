@@ -20,7 +20,7 @@ create_menu = APIRouter()
 
 @create_menu.post("/menu")
 async def create_categorias(menu:Menu):
-    new_categoria={"nombre":menu.nombre,"descripcion":menu.descripcion}
+    new_categoria={"nombre":menu.nombre}
     result =conn.execute(menu1.insert().values(new_categoria))
     return "success"
 
@@ -209,8 +209,8 @@ async def update_menu(
     return {'msg': 'Platillo actualizado'}
 
 @create_menu.delete("/admin/delate")
-def borrar_categoria(nombre_categoria:str):
-    conn.execute(menu1.delete().where(menu1.c.nombre == nombre_categoria))
+def borrar_categoria(id:str):
+    conn.execute(menu1.delete().where(menu1.c.id == id))
     return { 'message': "success"}
 
 
