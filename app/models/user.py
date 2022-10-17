@@ -26,7 +26,7 @@ class Menu1(Base):
         __tablename__ = 'menu1'
         id =Column(Integer,primary_key=True)
         nombre= Column(String(255))
-        descripcion= Column(String (255))
+        descripcion= Column(String(255))
         relationship('Platillos', backref=backref('menu1', cascade="all,delete"))
 menu1 = Menu1.__table__
 
