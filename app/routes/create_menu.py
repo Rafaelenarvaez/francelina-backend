@@ -20,7 +20,10 @@ create_menu = APIRouter()
 
 @create_menu.post("/menu")
 async def create_categorias(menu:Menu):
-    new_categoria={"nombre":menu.nombre}
+    new_categoria={
+        "nombre": menu.nombre,
+        "descripcion": menu.descripcion
+    }
     result =conn.execute(menu1.insert().values(new_categoria))
     return "success"
 

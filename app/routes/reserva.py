@@ -8,8 +8,7 @@ from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
 from pydantic import FilePath
 from config.db import conn
-from models.user import reservas
-from models.user import reservas_admin
+from models.user import reservas_admin, reservas_zona_aso, reservas, zonas
 from schemas.reserva_admin import Reserva_admin
 from schemas.reserva_cliente import Reserva
 from fastapi_mail import FastMail, MessageSchema,ConnectionConfig
@@ -252,11 +251,18 @@ def get_reservas(
         for r in reservs_admin:
 
             reservs = conn.execute(reservas.select().where(reservas.c.reservas_id == r['id']))
-            
+            zones = conn.execute(reservas_zona_aso.select().where(reservas_zona_aso.c.id_reservas_admin == r['id']))
+
             if reservs:
-                reserv_obj = {**dict(r), 'reservas': [{**dict(i)} for i in reservs]}
+                reserv_obj = {**dict(r), 'reservas': [{**dict(i)} for i in reservs], 'zones': []}
             else:
-                reserv_obj = {**dict(r), 'reservas': []}
+                reserv_obj = {**dict(r), 'reservas': [], 'zones': []}
+
+            for zoneAsso in zones:
+                # print(zoneAsso)
+                zone = conn.execute(zonas.select().where(zonas.c.id == zoneAsso['id_zonas'])).fetchone()
+                print(zone)
+                reserv_obj['zones'].append(dict(zone))
 
             reserv_admin_lst.append(reserv_obj)
 
