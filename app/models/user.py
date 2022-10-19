@@ -62,6 +62,7 @@ reservas = Reservas.__table__
 class Reservas_admin(Base):
         __tablename__ = 'reservas_admin'
         id=Column(Integer(), primary_key=True)
+        nombre=Column(String(255))
         hora1= Column(Time)
         hora2= Column(Time)
         capacidad=Column(Integer())
