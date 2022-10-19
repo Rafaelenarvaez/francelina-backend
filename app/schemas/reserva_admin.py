@@ -7,3 +7,4 @@ class Reserva_admin(BaseModel):
     hora1:time
     hora2:time
     capacidad:int
+    nombre: str

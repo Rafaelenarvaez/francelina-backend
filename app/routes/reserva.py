@@ -112,14 +112,14 @@ async def reserva(
     if (reserves_count + new_reserv['numero_de_personas']) > reserv['capacidad']:
         conn.execute(reservas_admin.update().values(max_capacity=True))
 
-    message = MessageSchema(
-          subject="Confirmacion de reserva",
-          recipients=[reserva.email, credenciales["EMAIL"]],  # List of recipients, as many as you can pass 
-         template_body=new_reserv,
-      )
+    # message = MessageSchema(
+    #       subject="Confirmacion de reserva",
+    #       recipients=[reserva.email, credenciales["EMAIL"]],  # List of recipients, as many as you can pass 
+    #      template_body=new_reserv,
+    #   )
    
-    fm = FastMail(conf)
-    await fm.send_message(message, template_name="email.html")
+    # fm = FastMail(conf)
+    # await fm.send_message(message, template_name="email.html")
     return {"message" : "reserva creada exitosamente" }
 
 
@@ -176,7 +176,8 @@ def create_reserva_admin(reserva: Reserva_admin, nombre_zona:List[str]):
     new_reserva = {
         "hora1": reserva.hora1,
         "hora2":reserva.hora2,
-        "capacidad": reserva.capacidad
+        "capacidad": reserva.capacidad,
+        "nombre": reserva.nombre
     }
 
     reser_id = conn.execute(reservas_admin.insert().values(new_reserva)).inserted_primary_key[0]
