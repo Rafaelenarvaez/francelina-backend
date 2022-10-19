@@ -33,12 +33,7 @@ conf = ConnectionConfig(
     TEMPLATE_FOLDER = Path(__file__).parent / 'templates',
 )
 
-
-
 create_reserva = APIRouter()
-
-
-
 
 @create_reserva.post("/reserva")
 async def reserva(
