@@ -65,7 +65,7 @@ async def reserva(
             })
 
     
-    qr = reservas.select().where(reservas.c.reservas_id == reserv['id'], reservas.c.fecha == reserva.fecha, reservas.c.zona == reserva.zona )
+    qr = reservas.select().where(reservas.c.reservas_id == reserv['id'], reservas.c.fecha == reserva.fecha)
     reserv_exists = conn.execute(qr).fetchall()
     
     reserves_count = 0
@@ -79,6 +79,8 @@ async def reserva(
     else:
         reserves_count = reserva.numero_de_personas
 
+    print('reservs count: ' + str(reserves_count))
+    print(reserves_count, reserv['capacidad'])
 
     if reserves_count > reserv['capacidad']:
 
@@ -104,7 +106,7 @@ async def reserva(
         }
         result = conn.execute(reservas.insert().values(new_reserv))
         
-    if (reserves_count + new_reserv['numero_de_personas']) > reserv['capacidad']:
+    if (reserves_count) >= reserv['capacidad']:
         conn.execute(reservas_admin.update().values(max_capacity=True))
 
     # message = MessageSchema(
@@ -121,7 +123,6 @@ async def reserva(
 @create_reserva.get("/max_capacity")
 async def reserva(
         id: int,
-        zona: str,
         fecha: str,
         numero_de_personas: int
 ):
@@ -141,7 +142,7 @@ async def reserva(
         }
 
     
-    qr = reservas.select().where(reservas.c.reservas_id == reserv['id'], reservas.c.fecha == fecha, reservas.c.zona == zona )
+    qr = reservas.select().where(reservas.c.reservas_id == reserv['id'], reservas.c.fecha == fecha )
     reserv_exists = conn.execute(qr).fetchall()
     
     reserves_count = 0
@@ -157,12 +158,48 @@ async def reserva(
 
     if reserves_count > reserv['capacidad']:
         return {
-            "max_capacity": True
+            "max_capacity": True,
+            "capacidad": reserv['capacidad'],
+            "reserves_count": reserves_count,
         }
     else:
         return {
-            "max_capacity": False
+            "max_capacity": False,
+            "capacidad": reserv['capacidad'],
+            "reserves_count": reserves_count,
         }
+
+@create_reserva.get("/capacity_count")
+async def reserva(
+        id: int,
+        fecha: str,
+):
+    qr = reservas_admin.select().where(reservas_admin.c.id == id)
+    reserv = conn.execute(qr).fetchone()
+
+    if not reserv:
+        return JSONResponse(
+            status_code=status.HTTP_404_NOT_FOUND,
+            content={
+                'msg': 'Esta reserva admin no existe'
+            })
+    
+    qr = reservas.select().where(reservas.c.reservas_id == reserv['id'], reservas.c.fecha == fecha)
+    reserv_exists = conn.execute(qr).fetchall()
+    
+    reserves_count = 0
+    
+    if reserv_exists:
+        for r in reserv_exists:
+            reserves_count += r['numero_de_personas']
+
+    else:
+        reserves_count = 0
+
+    return {
+        "capacidad": reserv['capacidad'],
+        "reserves_count": reserves_count,
+    }
 
 
 @create_reserva.post("/admin/reserva") 
