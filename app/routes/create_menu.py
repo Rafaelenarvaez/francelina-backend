@@ -4,7 +4,6 @@ import imp
 import os
 import random
 from os import getcwd
-from turtle import update
 from fastapi import APIRouter, Depends, Security, UploadFile, File, Form, status
 from pydantic import FilePath
 from fastapi.responses import JSONResponse
