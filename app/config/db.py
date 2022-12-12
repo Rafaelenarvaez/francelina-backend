@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, MetaData
 
 import databases
 
-engine = create_engine("mysql+pymysql://francelina:admin1234@localhost:3306/francelina")
+engine = create_engine("mysql+pymysql://user:@localhost:3306/francelina")
 
 meta = MetaData()
 
