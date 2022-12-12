@@ -1252,3 +1252,4 @@
  - "GET /api/get_img HTTP/1.0" 200
  - "GET /api/mostrar_horas HTTP/1.0" 200
  - "GET /api/platos?nested=true HTTP/1.0" 500
+ - "GET /api/platos?nested=true HTTP/1.0" 200
