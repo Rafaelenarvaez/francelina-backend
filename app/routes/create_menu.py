@@ -14,6 +14,8 @@ from config.db import conn
 from models.user import galeria
 from schemas.menu import Menu
 
+from uuid import uuid4
+
 
 ide = []
 create_menu = APIRouter()
@@ -44,7 +46,7 @@ async def create(
     if extencion not in ["png","JPG","jpg","PNG"]:
         return {"status": "error" , "detail": "Extencion no permitida"}
 
-    ide = random.randint(1,100)
+    ide = uuid4()
 
     id= str(ide) + "." + extencion
     generated_name = FILEPATH + id
@@ -72,11 +74,13 @@ async def create(
         "categoria_id": menu['id']
     }
 
-    rp = conn.execute(platillos.insert().values(new_menu))
+    new_dish_id = conn.execute(platillos.insert().values(new_menu)).inserted_primary_key[0]
+    new_dish = conn.execute(platillos.select().where(platillos.c.id == new_dish_id)).fetchone()
+     
     with open (generated_name, "wb") as file:
         file.write(file_content)
     
-    return {'msg': 'platillo creado con exito'}
+    return new_dish
 
 
 @create_menu.delete("/img/delete")
@@ -190,7 +194,7 @@ async def update_menu(
     if extencion not in ["png","jpg"]:
         return {"status": "error" , "detail": "Extencion no permitida"}
 
-    ide = random.randint(1,100)
+    ide = uuid4()
 
     id= str(ide) + "." + extencion
     generated_name = FILEPATH + id
