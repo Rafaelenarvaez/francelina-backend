@@ -1,9 +1,6 @@
 from asyncio import ensure_future
-from calendar import c
 import email
 from numbers import Integral
-from re import S
-from tkinter import NUMERIC
 from typing import Collection
 from unicodedata import numeric
 from sqlalchemy import Integer, Table, Column, table, true, ForeignKey, Time, Boolean
