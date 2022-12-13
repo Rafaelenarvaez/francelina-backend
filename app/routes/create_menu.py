@@ -45,11 +45,7 @@ async def create(
     if extencion not in ["png","JPG","jpg","PNG"]:
         return {"status": "error" , "detail": "Extencion no permitida"}
 
-<<<<<<< HEAD
-    ide = random.randint(1,100000)
-=======
     ide = uuid4()
->>>>>>> 2553693f4cd66665e06269d0012739e5c66cf225
 
     id= str(ide) + "." + extencion
     generated_name = FILEPATH + id
