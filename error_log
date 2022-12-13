@@ -5502,3 +5502,1339 @@ sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2006, "MySQL se
 [SQL: SELECT menu1.id, menu1.nombre, menu1.descripcion 
 FROM menu1]
 (Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2022-12-12 23:35:45 +0000] [2154] [CRITICAL] WORKER TIMEOUT (pid:2168)
+[2022-12-12 23:35:57 +0000] [2154] [CRITICAL] WORKER TIMEOUT (pid:2169)
+[2022-12-12 23:36:28 +0000] [2154] [WARNING] Worker with pid 2168 was terminated due to signal 9
+[2022-12-12 23:36:28 +0000] [2154] [WARNING] Worker with pid 2169 was terminated due to signal 9
+[2022-12-12 23:36:28 +0000] [2154] [DEBUG] 1 workers
+[2022-12-12 23:36:28 +0000] [25403] [INFO] Booting worker with pid: 25403
+[2022-12-12 23:36:28 +0000] [25404] [INFO] Booting worker with pid: 25404
+[2022-12-12 23:36:28 +0000] [2154] [DEBUG] 2 workers
+[2022-12-12 23:36:31 +0000] [25403] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-12 23:36:31 +0000] [25403] [INFO] Worker exiting (pid: 25403)
+[2022-12-12 23:36:31 +0000] [25404] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-12 23:36:31 +0000] [25404] [INFO] Worker exiting (pid: 25404)
+[2022-12-12 23:42:12 +0000] [25578] [DEBUG] Current configuration:
+  config: gunicorn_conf.py
+  wsgi_app: None
+  bind: ['unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock']
+  backlog: 2048
+  workers: 2
+  worker_class: uvicorn.workers.UvicornWorker
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/ubuntu/proyects/francelina-backend/app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1000
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /home/ubuntu/proyects/francelina-backend/access_log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/ubuntu/proyects/francelina-backend/error_log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fcddcc5fc10>
+  on_reload: <function OnReload.on_reload at 0x7fcddcc5fd30>
+  when_ready: <function WhenReady.when_ready at 0x7fcddcc5fe50>
+  pre_fork: <function Prefork.pre_fork at 0x7fcddcc5ff70>
+  post_fork: <function Postfork.post_fork at 0x7fcddcc720d0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fcddcc721f0>
+  worker_int: <function WorkerInt.worker_int at 0x7fcddcc72310>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fcddcc72430>
+  pre_exec: <function PreExec.pre_exec at 0x7fcddcc72550>
+  pre_request: <function PreRequest.pre_request at 0x7fcddcc72670>
+  post_request: <function PostRequest.post_request at 0x7fcddcc72700>
+  child_exit: <function ChildExit.child_exit at 0x7fcddcc72820>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fcddcc72940>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fcddcc72a60>
+  on_exit: <function OnExit.on_exit at 0x7fcddcc72b80>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2022-12-12 23:42:12 +0000] [25578] [INFO] Starting gunicorn 20.1.0
+[2022-12-12 23:42:12 +0000] [25578] [DEBUG] Arbiter booted
+[2022-12-12 23:42:12 +0000] [25578] [INFO] Listening at: unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock (25578)
+[2022-12-12 23:42:12 +0000] [25578] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[2022-12-12 23:42:12 +0000] [25594] [INFO] Booting worker with pid: 25594
+[2022-12-12 23:42:12 +0000] [25595] [INFO] Booting worker with pid: 25595
+[2022-12-12 23:42:12 +0000] [25578] [DEBUG] 2 workers
+[2022-12-12 23:42:12 +0000] [25595] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-12 23:42:12 +0000] [25595] [INFO] Worker exiting (pid: 25595)
+[2022-12-12 23:42:12 +0000] [25594] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-12 23:42:12 +0000] [25594] [INFO] Worker exiting (pid: 25594)
+[2022-12-12 23:42:13 +0000] [25578] [WARNING] Worker with pid 25594 was terminated due to signal 15
+[2022-12-12 23:42:13 +0000] [25578] [INFO] Shutting down: Master
+[2022-12-12 23:42:13 +0000] [25578] [INFO] Reason: Worker failed to boot.
+[2022-12-12 23:43:37 +0000] [25679] [DEBUG] Current configuration:
+  config: gunicorn_conf.py
+  wsgi_app: None
+  bind: ['unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock']
+  backlog: 2048
+  workers: 2
+  worker_class: uvicorn.workers.UvicornWorker
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/ubuntu/proyects/francelina-backend/app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1000
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /home/ubuntu/proyects/francelina-backend/access_log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/ubuntu/proyects/francelina-backend/error_log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f34420dec10>
+  on_reload: <function OnReload.on_reload at 0x7f34420ded30>
+  when_ready: <function WhenReady.when_ready at 0x7f34420dee50>
+  pre_fork: <function Prefork.pre_fork at 0x7f34420def70>
+  post_fork: <function Postfork.post_fork at 0x7f34420f10d0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f34420f11f0>
+  worker_int: <function WorkerInt.worker_int at 0x7f34420f1310>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f34420f1430>
+  pre_exec: <function PreExec.pre_exec at 0x7f34420f1550>
+  pre_request: <function PreRequest.pre_request at 0x7f34420f1670>
+  post_request: <function PostRequest.post_request at 0x7f34420f1700>
+  child_exit: <function ChildExit.child_exit at 0x7f34420f1820>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f34420f1940>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f34420f1a60>
+  on_exit: <function OnExit.on_exit at 0x7f34420f1b80>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2022-12-12 23:43:37 +0000] [25679] [INFO] Starting gunicorn 20.1.0
+[2022-12-12 23:43:37 +0000] [25679] [DEBUG] Arbiter booted
+[2022-12-12 23:43:37 +0000] [25679] [INFO] Listening at: unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock (25679)
+[2022-12-12 23:43:37 +0000] [25679] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[2022-12-12 23:43:37 +0000] [25695] [INFO] Booting worker with pid: 25695
+[2022-12-12 23:43:38 +0000] [25696] [INFO] Booting worker with pid: 25696
+[2022-12-12 23:43:38 +0000] [25679] [DEBUG] 2 workers
+[2022-12-12 23:43:38 +0000] [25695] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-12 23:43:38 +0000] [25695] [INFO] Worker exiting (pid: 25695)
+[2022-12-12 23:43:38 +0000] [25696] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-12 23:43:38 +0000] [25696] [INFO] Worker exiting (pid: 25696)
+[2022-12-12 23:43:38 +0000] [25679] [WARNING] Worker with pid 25696 was terminated due to signal 15
+[2022-12-12 23:43:38 +0000] [25679] [INFO] Shutting down: Master
+[2022-12-12 23:43:38 +0000] [25679] [INFO] Reason: Worker failed to boot.
+[2022-12-12 23:43:51 +0000] [25701] [DEBUG] Current configuration:
+  config: gunicorn_conf.py
+  wsgi_app: None
+  bind: ['unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock']
+  backlog: 2048
+  workers: 2
+  worker_class: uvicorn.workers.UvicornWorker
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/ubuntu/proyects/francelina-backend/app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1000
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /home/ubuntu/proyects/francelina-backend/access_log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/ubuntu/proyects/francelina-backend/error_log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f1921385c10>
+  on_reload: <function OnReload.on_reload at 0x7f1921385d30>
+  when_ready: <function WhenReady.when_ready at 0x7f1921385e50>
+  pre_fork: <function Prefork.pre_fork at 0x7f1921385f70>
+  post_fork: <function Postfork.post_fork at 0x7f19213980d0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f19213981f0>
+  worker_int: <function WorkerInt.worker_int at 0x7f1921398310>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f1921398430>
+  pre_exec: <function PreExec.pre_exec at 0x7f1921398550>
+  pre_request: <function PreRequest.pre_request at 0x7f1921398670>
+  post_request: <function PostRequest.post_request at 0x7f1921398700>
+  child_exit: <function ChildExit.child_exit at 0x7f1921398820>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f1921398940>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f1921398a60>
+  on_exit: <function OnExit.on_exit at 0x7f1921398b80>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2022-12-12 23:43:51 +0000] [25701] [INFO] Starting gunicorn 20.1.0
+[2022-12-12 23:43:51 +0000] [25701] [DEBUG] Arbiter booted
+[2022-12-12 23:43:51 +0000] [25701] [INFO] Listening at: unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock (25701)
+[2022-12-12 23:43:51 +0000] [25701] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[2022-12-12 23:43:51 +0000] [25717] [INFO] Booting worker with pid: 25717
+[2022-12-12 23:43:51 +0000] [25718] [INFO] Booting worker with pid: 25718
+[2022-12-12 23:43:51 +0000] [25701] [DEBUG] 2 workers
+[2022-12-12 23:43:51 +0000] [25717] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-12 23:43:51 +0000] [25717] [INFO] Worker exiting (pid: 25717)
+[2022-12-12 23:43:51 +0000] [25701] [WARNING] Worker with pid 25718 was terminated due to signal 15
+[2022-12-12 23:43:52 +0000] [25701] [INFO] Shutting down: Master
+[2022-12-12 23:43:52 +0000] [25701] [INFO] Reason: Worker failed to boot.
+[2022-12-12 23:44:25 +0000] [25826] [DEBUG] Current configuration:
+  config: gunicorn_conf.py
+  wsgi_app: None
+  bind: ['unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock']
+  backlog: 2048
+  workers: 2
+  worker_class: uvicorn.workers.UvicornWorker
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/ubuntu/proyects/francelina-backend/app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1000
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /home/ubuntu/proyects/francelina-backend/access_log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/ubuntu/proyects/francelina-backend/error_log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f8519d24c10>
+  on_reload: <function OnReload.on_reload at 0x7f8519d24d30>
+  when_ready: <function WhenReady.when_ready at 0x7f8519d24e50>
+  pre_fork: <function Prefork.pre_fork at 0x7f8519d24f70>
+  post_fork: <function Postfork.post_fork at 0x7f8519d370d0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f8519d371f0>
+  worker_int: <function WorkerInt.worker_int at 0x7f8519d37310>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f8519d37430>
+  pre_exec: <function PreExec.pre_exec at 0x7f8519d37550>
+  pre_request: <function PreRequest.pre_request at 0x7f8519d37670>
+  post_request: <function PostRequest.post_request at 0x7f8519d37700>
+  child_exit: <function ChildExit.child_exit at 0x7f8519d37820>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f8519d37940>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f8519d37a60>
+  on_exit: <function OnExit.on_exit at 0x7f8519d37b80>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2022-12-12 23:44:25 +0000] [25826] [INFO] Starting gunicorn 20.1.0
+[2022-12-12 23:44:25 +0000] [25826] [DEBUG] Arbiter booted
+[2022-12-12 23:44:25 +0000] [25826] [INFO] Listening at: unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock (25826)
+[2022-12-12 23:44:25 +0000] [25826] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[2022-12-12 23:44:25 +0000] [25828] [INFO] Booting worker with pid: 25828
+[2022-12-12 23:44:25 +0000] [25829] [INFO] Booting worker with pid: 25829
+[2022-12-12 23:44:25 +0000] [25826] [DEBUG] 2 workers
+[2022-12-12 23:44:25 +0000] [25828] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-12 23:44:25 +0000] [25828] [INFO] Worker exiting (pid: 25828)
+[2022-12-12 23:44:26 +0000] [25829] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-12 23:44:26 +0000] [25829] [INFO] Worker exiting (pid: 25829)
+[2022-12-12 23:44:26 +0000] [25826] [WARNING] Worker with pid 25829 was terminated due to signal 15
+[2022-12-12 23:44:26 +0000] [25826] [INFO] Shutting down: Master
+[2022-12-12 23:44:26 +0000] [25826] [INFO] Reason: Worker failed to boot.
+[2022-12-12 23:50:49 +0000] [25922] [DEBUG] Current configuration:
+  config: gunicorn_conf.py
+  wsgi_app: None
+  bind: ['unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock']
+  backlog: 2048
+  workers: 2
+  worker_class: uvicorn.workers.UvicornWorker
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/ubuntu/proyects/francelina-backend/app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1000
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /home/ubuntu/proyects/francelina-backend/access_log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/ubuntu/proyects/francelina-backend/error_log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fe9936f8c10>
+  on_reload: <function OnReload.on_reload at 0x7fe9936f8d30>
+  when_ready: <function WhenReady.when_ready at 0x7fe9936f8e50>
+  pre_fork: <function Prefork.pre_fork at 0x7fe9936f8f70>
+  post_fork: <function Postfork.post_fork at 0x7fe99370b0d0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fe99370b1f0>
+  worker_int: <function WorkerInt.worker_int at 0x7fe99370b310>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fe99370b430>
+  pre_exec: <function PreExec.pre_exec at 0x7fe99370b550>
+  pre_request: <function PreRequest.pre_request at 0x7fe99370b670>
+  post_request: <function PostRequest.post_request at 0x7fe99370b700>
+  child_exit: <function ChildExit.child_exit at 0x7fe99370b820>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fe99370b940>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fe99370ba60>
+  on_exit: <function OnExit.on_exit at 0x7fe99370bb80>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2022-12-12 23:50:49 +0000] [25922] [INFO] Starting gunicorn 20.1.0
+[2022-12-12 23:50:49 +0000] [25922] [DEBUG] Arbiter booted
+[2022-12-12 23:50:49 +0000] [25922] [INFO] Listening at: unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock (25922)
+[2022-12-12 23:50:49 +0000] [25922] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[2022-12-12 23:50:49 +0000] [25938] [INFO] Booting worker with pid: 25938
+[2022-12-12 23:50:49 +0000] [25939] [INFO] Booting worker with pid: 25939
+[2022-12-12 23:50:49 +0000] [25922] [DEBUG] 2 workers
+[2022-12-12 23:50:49 +0000] [25938] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-12 23:50:49 +0000] [25938] [INFO] Worker exiting (pid: 25938)
+[2022-12-12 23:50:50 +0000] [25922] [WARNING] Worker with pid 25939 was terminated due to signal 15
+[2022-12-12 23:50:50 +0000] [25922] [INFO] Shutting down: Master
+[2022-12-12 23:50:50 +0000] [25922] [INFO] Reason: Worker failed to boot.
+[2022-12-13 00:03:59 +0000] [26152] [DEBUG] Current configuration:
+  config: gunicorn_conf.py
+  wsgi_app: None
+  bind: ['unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock']
+  backlog: 2048
+  workers: 2
+  worker_class: uvicorn.workers.UvicornWorker
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/ubuntu/proyects/francelina-backend/app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1000
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /home/ubuntu/proyects/francelina-backend/access_log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/ubuntu/proyects/francelina-backend/error_log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fc6bddd3c10>
+  on_reload: <function OnReload.on_reload at 0x7fc6bddd3d30>
+  when_ready: <function WhenReady.when_ready at 0x7fc6bddd3e50>
+  pre_fork: <function Prefork.pre_fork at 0x7fc6bddd3f70>
+  post_fork: <function Postfork.post_fork at 0x7fc6bdde60d0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fc6bdde61f0>
+  worker_int: <function WorkerInt.worker_int at 0x7fc6bdde6310>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fc6bdde6430>
+  pre_exec: <function PreExec.pre_exec at 0x7fc6bdde6550>
+  pre_request: <function PreRequest.pre_request at 0x7fc6bdde6670>
+  post_request: <function PostRequest.post_request at 0x7fc6bdde6700>
+  child_exit: <function ChildExit.child_exit at 0x7fc6bdde6820>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fc6bdde6940>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fc6bdde6a60>
+  on_exit: <function OnExit.on_exit at 0x7fc6bdde6b80>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2022-12-13 00:03:59 +0000] [26152] [INFO] Starting gunicorn 20.1.0
+[2022-12-13 00:03:59 +0000] [26152] [DEBUG] Arbiter booted
+[2022-12-13 00:03:59 +0000] [26152] [INFO] Listening at: unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock (26152)
+[2022-12-13 00:03:59 +0000] [26152] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[2022-12-13 00:03:59 +0000] [26166] [INFO] Booting worker with pid: 26166
+[2022-12-13 00:03:59 +0000] [26167] [INFO] Booting worker with pid: 26167
+[2022-12-13 00:03:59 +0000] [26152] [DEBUG] 2 workers
+[2022-12-13 00:03:59 +0000] [26166] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-13 00:03:59 +0000] [26166] [INFO] Worker exiting (pid: 26166)
+[2022-12-13 00:03:59 +0000] [26167] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-13 00:03:59 +0000] [26167] [INFO] Worker exiting (pid: 26167)
+[2022-12-13 00:03:59 +0000] [26152] [WARNING] Worker with pid 26167 was terminated due to signal 15
+[2022-12-13 00:03:59 +0000] [26152] [INFO] Shutting down: Master
+[2022-12-13 00:03:59 +0000] [26152] [INFO] Reason: Worker failed to boot.
+[2022-12-13 00:08:09 +0000] [26183] [DEBUG] Current configuration:
+  config: gunicorn_conf.py
+  wsgi_app: None
+  bind: ['unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock']
+  backlog: 2048
+  workers: 2
+  worker_class: uvicorn.workers.UvicornWorker
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/ubuntu/proyects/francelina-backend/app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1000
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /home/ubuntu/proyects/francelina-backend/access_log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/ubuntu/proyects/francelina-backend/error_log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f1cfa912c10>
+  on_reload: <function OnReload.on_reload at 0x7f1cfa912d30>
+  when_ready: <function WhenReady.when_ready at 0x7f1cfa912e50>
+  pre_fork: <function Prefork.pre_fork at 0x7f1cfa912f70>
+  post_fork: <function Postfork.post_fork at 0x7f1cfa9250d0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f1cfa9251f0>
+  worker_int: <function WorkerInt.worker_int at 0x7f1cfa925310>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f1cfa925430>
+  pre_exec: <function PreExec.pre_exec at 0x7f1cfa925550>
+  pre_request: <function PreRequest.pre_request at 0x7f1cfa925670>
+  post_request: <function PostRequest.post_request at 0x7f1cfa925700>
+  child_exit: <function ChildExit.child_exit at 0x7f1cfa925820>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f1cfa925940>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f1cfa925a60>
+  on_exit: <function OnExit.on_exit at 0x7f1cfa925b80>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2022-12-13 00:08:09 +0000] [26183] [INFO] Starting gunicorn 20.1.0
+[2022-12-13 00:08:09 +0000] [26183] [DEBUG] Arbiter booted
+[2022-12-13 00:08:09 +0000] [26183] [INFO] Listening at: unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock (26183)
+[2022-12-13 00:08:09 +0000] [26183] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[2022-12-13 00:08:09 +0000] [26199] [INFO] Booting worker with pid: 26199
+[2022-12-13 00:08:09 +0000] [26200] [INFO] Booting worker with pid: 26200
+[2022-12-13 00:08:09 +0000] [26183] [DEBUG] 2 workers
+[2022-12-13 00:08:10 +0000] [26199] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-13 00:08:10 +0000] [26199] [INFO] Worker exiting (pid: 26199)
+[2022-12-13 00:08:10 +0000] [26200] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-13 00:08:10 +0000] [26200] [INFO] Worker exiting (pid: 26200)
+[2022-12-13 00:08:10 +0000] [26183] [WARNING] Worker with pid 26200 was terminated due to signal 15
+[2022-12-13 00:08:10 +0000] [26183] [INFO] Shutting down: Master
+[2022-12-13 00:08:10 +0000] [26183] [INFO] Reason: Worker failed to boot.
+[2022-12-13 00:12:28 +0000] [26247] [DEBUG] Current configuration:
+  config: gunicorn_conf.py
+  wsgi_app: None
+  bind: ['unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock']
+  backlog: 2048
+  workers: 2
+  worker_class: uvicorn.workers.UvicornWorker
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/ubuntu/proyects/francelina-backend/app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1000
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /home/ubuntu/proyects/francelina-backend/access_log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/ubuntu/proyects/francelina-backend/error_log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f84fe507c10>
+  on_reload: <function OnReload.on_reload at 0x7f84fe507d30>
+  when_ready: <function WhenReady.when_ready at 0x7f84fe507e50>
+  pre_fork: <function Prefork.pre_fork at 0x7f84fe507f70>
+  post_fork: <function Postfork.post_fork at 0x7f84fe51a0d0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f84fe51a1f0>
+  worker_int: <function WorkerInt.worker_int at 0x7f84fe51a310>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f84fe51a430>
+  pre_exec: <function PreExec.pre_exec at 0x7f84fe51a550>
+  pre_request: <function PreRequest.pre_request at 0x7f84fe51a670>
+  post_request: <function PostRequest.post_request at 0x7f84fe51a700>
+  child_exit: <function ChildExit.child_exit at 0x7f84fe51a820>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f84fe51a940>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f84fe51aa60>
+  on_exit: <function OnExit.on_exit at 0x7f84fe51ab80>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2022-12-13 00:12:28 +0000] [26247] [INFO] Starting gunicorn 20.1.0
+[2022-12-13 00:12:28 +0000] [26247] [DEBUG] Arbiter booted
+[2022-12-13 00:12:28 +0000] [26247] [INFO] Listening at: unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock (26247)
+[2022-12-13 00:12:28 +0000] [26247] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[2022-12-13 00:12:28 +0000] [26262] [INFO] Booting worker with pid: 26262
+[2022-12-13 00:12:28 +0000] [26263] [INFO] Booting worker with pid: 26263
+[2022-12-13 00:12:28 +0000] [26247] [DEBUG] 2 workers
+[2022-12-13 00:12:29 +0000] [26262] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-13 00:12:29 +0000] [26262] [INFO] Worker exiting (pid: 26262)
+[2022-12-13 00:12:29 +0000] [26263] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/proyects/francelina-backend/app/app.py", line 4, in <module>
+    from routes.router import api_router
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/router.py", line 3, in <module>
+    from routes import (
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 48
+    <<<<<<< HEAD
+    ^
+SyntaxError: invalid syntax
+[2022-12-13 00:12:29 +0000] [26263] [INFO] Worker exiting (pid: 26263)
+[2022-12-13 00:12:29 +0000] [26247] [WARNING] Worker with pid 26263 was terminated due to signal 15
+[2022-12-13 00:12:29 +0000] [26247] [INFO] Shutting down: Master
+[2022-12-13 00:12:29 +0000] [26247] [INFO] Reason: Worker failed to boot.
