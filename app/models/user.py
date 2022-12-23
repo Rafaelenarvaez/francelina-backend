@@ -3,7 +3,8 @@ import email
 from numbers import Integral
 from typing import Collection
 from unicodedata import numeric
-from sqlalchemy import Integer, Table, Column, table, true, ForeignKey, Time, Boolean
+from sqlalchemy import Integer, Table, Column, table, true, ForeignKey, Time, Boolean, BigInteger
+from sqlalchemy_utils.types.email import EmailType
 from sqlalchemy.orm import relationship, declarative_base, backref
 from sqlalchemy.sql.sqltypes import Integer, String, Numeric
 from config.db import meta,engine 
@@ -92,6 +93,19 @@ class Galeria(Base):
         ruta= Column ( String(255))
 
 galeria= Galeria.__table__
+ 
+class User(Base):
+    __tablename__ = 'user'
+
+    id = Column(BigInteger, primary_key=True)
+    email = Column(EmailType)
+    password = Column(String(75))
+
+    def __repr__(self):
+        return "<User(id=%s, email=%s)>" % (self.id, self.email)
+
+
+user = User.__table__
 
 
 Base.metadata.create_all(engine)
