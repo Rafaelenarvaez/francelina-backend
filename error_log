@@ -6838,3 +6838,1272 @@ SyntaxError: invalid syntax
 [2022-12-13 00:12:29 +0000] [26247] [WARNING] Worker with pid 26263 was terminated due to signal 15
 [2022-12-13 00:12:29 +0000] [26247] [INFO] Shutting down: Master
 [2022-12-13 00:12:29 +0000] [26247] [INFO] Reason: Worker failed to boot.
+[2022-12-13 00:27:27 +0000] [26457] [DEBUG] Current configuration:
+  config: gunicorn_conf.py
+  wsgi_app: None
+  bind: ['unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock']
+  backlog: 2048
+  workers: 2
+  worker_class: uvicorn.workers.UvicornWorker
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/ubuntu/proyects/francelina-backend/app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1000
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /home/ubuntu/proyects/francelina-backend/access_log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/ubuntu/proyects/francelina-backend/error_log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fb51cd30c10>
+  on_reload: <function OnReload.on_reload at 0x7fb51cd30d30>
+  when_ready: <function WhenReady.when_ready at 0x7fb51cd30e50>
+  pre_fork: <function Prefork.pre_fork at 0x7fb51cd30f70>
+  post_fork: <function Postfork.post_fork at 0x7fb51cd430d0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fb51cd431f0>
+  worker_int: <function WorkerInt.worker_int at 0x7fb51cd43310>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fb51cd43430>
+  pre_exec: <function PreExec.pre_exec at 0x7fb51cd43550>
+  pre_request: <function PreRequest.pre_request at 0x7fb51cd43670>
+  post_request: <function PostRequest.post_request at 0x7fb51cd43700>
+  child_exit: <function ChildExit.child_exit at 0x7fb51cd43820>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fb51cd43940>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fb51cd43a60>
+  on_exit: <function OnExit.on_exit at 0x7fb51cd43b80>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2022-12-13 00:27:27 +0000] [26457] [INFO] Starting gunicorn 20.1.0
+[2022-12-13 00:27:27 +0000] [26457] [DEBUG] Arbiter booted
+[2022-12-13 00:27:27 +0000] [26457] [INFO] Listening at: unix:/home/ubuntu/proyects/francelina-backend/app/gunicorn.sock (26457)
+[2022-12-13 00:27:27 +0000] [26457] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[2022-12-13 00:27:27 +0000] [26473] [INFO] Booting worker with pid: 26473
+[2022-12-13 00:27:27 +0000] [26474] [INFO] Booting worker with pid: 26474
+[2022-12-13 00:27:27 +0000] [26457] [DEBUG] 2 workers
+[2022-12-13 00:27:28 +0000] [26473] [INFO] Started server process [26473]
+[2022-12-13 00:27:28 +0000] [26473] [INFO] Waiting for application startup.
+[2022-12-13 00:27:28 +0000] [26473] [INFO] Application startup complete.
+[2022-12-13 00:27:28 +0000] [26474] [INFO] Started server process [26474]
+[2022-12-13 00:27:28 +0000] [26474] [INFO] Waiting for application startup.
+[2022-12-13 00:27:28 +0000] [26474] [INFO] Application startup complete.
+[2022-12-13 10:48:16 +0000] [26473] [ERROR] Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 756, in _write_bytes
+    self._sock.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 706, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 227, in app
+    raw_response = await run_endpoint_function(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 162, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/to_thread.py", line 31, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 937, in run_sync_in_worker_thread
+    return await future
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 867, in run
+    result = context.run(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/reserva.py", line 315, in get_horas
+    reservs_admin = conn.execute(qr).fetchall()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1306, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 332, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1498, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1862, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2043, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+[SQL: SELECT reservas_admin.id, reservas_admin.nombre, reservas_admin.hora1, reservas_admin.hora2, reservas_admin.capacidad, reservas_admin.max_capacity 
+FROM reservas_admin]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2022-12-13 18:20:10 +0000] [26474] [ERROR] Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 756, in _write_bytes
+    self._sock.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 706, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 227, in app
+    raw_response = await run_endpoint_function(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 162, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/to_thread.py", line 31, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 937, in run_sync_in_worker_thread
+    return await future
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 867, in run
+    result = context.run(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 155, in get_platos
+    menu = conn.execute(menu1.select()).fetchall()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1306, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 332, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1498, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1862, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2043, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+[SQL: SELECT menu1.id, menu1.nombre, menu1.descripcion 
+FROM menu1]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2022-12-16 22:35:58 +0000] [26473] [ERROR] Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 756, in _write_bytes
+    self._sock.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 706, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 227, in app
+    raw_response = await run_endpoint_function(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 162, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/to_thread.py", line 31, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 937, in run_sync_in_worker_thread
+    return await future
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 867, in run
+    result = context.run(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 155, in get_platos
+    menu = conn.execute(menu1.select()).fetchall()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1306, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 332, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1498, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1862, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2043, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+[SQL: SELECT menu1.id, menu1.nombre, menu1.descripcion 
+FROM menu1]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2022-12-17 04:04:18 +0000] [26474] [ERROR] Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 756, in _write_bytes
+    self._sock.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 706, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 227, in app
+    raw_response = await run_endpoint_function(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 162, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/to_thread.py", line 31, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 937, in run_sync_in_worker_thread
+    return await future
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 867, in run
+    result = context.run(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 147, in get_images
+    return [dict(i) for i in conn.execute(galeria.select()).fetchall()]
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1306, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 332, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1498, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1862, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2043, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+[SQL: SELECT galeria.id, galeria.ruta 
+FROM galeria]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2022-12-17 21:04:06 +0000] [26474] [ERROR] Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 756, in _write_bytes
+    self._sock.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 706, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 227, in app
+    raw_response = await run_endpoint_function(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 162, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/to_thread.py", line 31, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 937, in run_sync_in_worker_thread
+    return await future
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 867, in run
+    result = context.run(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 155, in get_platos
+    menu = conn.execute(menu1.select()).fetchall()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1306, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 332, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1498, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1862, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2043, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+[SQL: SELECT menu1.id, menu1.nombre, menu1.descripcion 
+FROM menu1]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2022-12-18 14:48:35 +0000] [26473] [ERROR] Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 756, in _write_bytes
+    self._sock.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 706, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 227, in app
+    raw_response = await run_endpoint_function(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 162, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/to_thread.py", line 31, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 937, in run_sync_in_worker_thread
+    return await future
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 867, in run
+    result = context.run(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 155, in get_platos
+    menu = conn.execute(menu1.select()).fetchall()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1306, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 332, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1498, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1862, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2043, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+[SQL: SELECT menu1.id, menu1.nombre, menu1.descripcion 
+FROM menu1]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2022-12-19 23:06:45 +0000] [26474] [ERROR] Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 756, in _write_bytes
+    self._sock.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 706, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 227, in app
+    raw_response = await run_endpoint_function(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 162, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/to_thread.py", line 31, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 937, in run_sync_in_worker_thread
+    return await future
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 867, in run
+    result = context.run(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/create_menu.py", line 155, in get_platos
+    menu = conn.execute(menu1.select()).fetchall()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1306, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 332, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1498, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1862, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2043, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+[SQL: SELECT menu1.id, menu1.nombre, menu1.descripcion 
+FROM menu1]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2022-12-20 22:09:11 +0000] [26473] [ERROR] Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 756, in _write_bytes
+    self._sock.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 706, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 227, in app
+    raw_response = await run_endpoint_function(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 162, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/to_thread.py", line 31, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 937, in run_sync_in_worker_thread
+    return await future
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 867, in run
+    result = context.run(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/reserva.py", line 315, in get_horas
+    reservs_admin = conn.execute(qr).fetchall()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1306, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 332, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1498, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1862, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2043, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+[SQL: SELECT reservas_admin.id, reservas_admin.nombre, reservas_admin.hora1, reservas_admin.hora2, reservas_admin.capacidad, reservas_admin.max_capacity 
+FROM reservas_admin]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2022-12-22 15:43:23 +0000] [26473] [ERROR] Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 756, in _write_bytes
+    self._sock.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 706, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 227, in app
+    raw_response = await run_endpoint_function(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 162, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/to_thread.py", line 31, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 937, in run_sync_in_worker_thread
+    return await future
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 867, in run
+    result = context.run(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/reserva.py", line 315, in get_horas
+    reservs_admin = conn.execute(qr).fetchall()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1306, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 332, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1498, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1862, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2043, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+[SQL: SELECT reservas_admin.id, reservas_admin.nombre, reservas_admin.hora1, reservas_admin.hora2, reservas_admin.capacidad, reservas_admin.max_capacity 
+FROM reservas_admin]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2022-12-22 15:43:40 +0000] [26474] [ERROR] Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 756, in _write_bytes
+    self._sock.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 706, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 227, in app
+    raw_response = await run_endpoint_function(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 162, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/to_thread.py", line 31, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 937, in run_sync_in_worker_thread
+    return await future
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 867, in run
+    result = context.run(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/reserva.py", line 315, in get_horas
+    reservs_admin = conn.execute(qr).fetchall()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1306, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 332, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1498, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1862, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2043, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+[SQL: SELECT reservas_admin.id, reservas_admin.nombre, reservas_admin.hora1, reservas_admin.hora2, reservas_admin.capacidad, reservas_admin.max_capacity 
+FROM reservas_admin]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2022-12-23 14:29:08 +0000] [26474] [ERROR] Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 756, in _write_bytes
+    self._sock.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 706, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 227, in app
+    raw_response = await run_endpoint_function(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 162, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/to_thread.py", line 31, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 937, in run_sync_in_worker_thread
+    return await future
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 867, in run
+    result = context.run(func, *args)
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/reserva.py", line 315, in get_horas
+    reservs_admin = conn.execute(qr).fetchall()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1306, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 332, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1498, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1862, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2043, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+[SQL: SELECT reservas_admin.id, reservas_admin.nombre, reservas_admin.hora1, reservas_admin.hora2, reservas_admin.capacidad, reservas_admin.max_capacity 
+FROM reservas_admin]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2022-12-23 14:29:21 +0000] [26473] [ERROR] Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 756, in _write_bytes
+    self._sock.sendall(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/applications.py", line 269, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/applications.py", line 124, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+    raise e
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 706, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 227, in app
+    raw_response = await run_endpoint_function(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/fastapi/routing.py", line 160, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/ubuntu/proyects/francelina-backend/app/routes/reserva.py", line 178, in reserva
+    reserv = conn.execute(qr).fetchone()
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1306, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 332, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1498, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1862, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2043, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1819, in _execute_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 814, in _execute_command
+    self._write_bytes(packet)
+  File "/home/ubuntu/proyects/francelina-backend/env/lib/python3.8/site-packages/pymysql/connections.py", line 759, in _write_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2006, "MySQL server has gone away (BrokenPipeError(32, 'Broken pipe'))")
+[SQL: SELECT reservas_admin.id, reservas_admin.nombre, reservas_admin.hora1, reservas_admin.hora2, reservas_admin.capacidad, reservas_admin.max_capacity 
+FROM reservas_admin 
+WHERE reservas_admin.id = %(id_1)s]
+[parameters: {'id_1': 6}]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
