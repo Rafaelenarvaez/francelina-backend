@@ -1,9 +1,6 @@
-from email.mime import image
-from hashlib import new
-import imp
 import os
 import random
-from os import getcwd
+from typing import Any
 from fastapi import APIRouter, Depends, Security, UploadFile, File, Form, status
 from pydantic import FilePath
 from fastapi.responses import JSONResponse
@@ -13,6 +10,8 @@ from config.db import conn
 from models.user import galeria
 from schemas.menu import Menu
 
+from functions.deps import get_current_active_user
+
 from uuid import uuid4
 
 
@@ -20,7 +19,10 @@ ide = []
 create_menu = APIRouter()
 
 @create_menu.post("/menu")
-async def create_categorias(menu:Menu):
+async def create_categorias(
+    menu:Menu,
+    current_user: Any = Security(get_current_active_user)
+):
     new_categoria={
         "nombre": menu.nombre,
         "descripcion": menu.descripcion
@@ -34,8 +36,9 @@ async def create(
     nombre: str,
     precio: str,
     descripcion: str,
-    file:UploadFile=File(...)
-    ):
+    file:UploadFile=File(...),
+    current_user: Any = Security(get_current_active_user)
+):
     
     
     FILEPATH= "./imagenes/menu/"
@@ -84,7 +87,8 @@ async def create(
 
 @create_menu.delete("/img/delete")
 async def remove_img(
-    id: int
+    id: int,
+    current_user: Any = Security(get_current_active_user)
 ):
     qr = galeria.select().where(galeria.c.id == id)
     img = conn.execute(qr).fetchone()
@@ -108,7 +112,10 @@ async def remove_img(
 
 
 @create_menu.post("/uploadfile/galeria")
-async def uploadfile_post(file:UploadFile=File(...)):
+async def uploadfile_post(
+    file:UploadFile=File(...),
+    current_user: Any = Security(get_current_active_user)
+):
 
     FILEPATH= "./imagenes/galery/"
     filename=file.filename
@@ -182,8 +189,9 @@ async def update_menu(
     nombre: str = Form(...),
     precio: str = Form(...),
     descripcion: str = Form(...),
-    file:UploadFile=File(...)
-    ):
+    file:UploadFile=File(...),
+    current_user: Any = Security(get_current_active_user)
+):
 
 
     FILEPATH= "./imagenes/menu/"
@@ -215,12 +223,18 @@ async def update_menu(
     return {'msg': 'Platillo actualizado'}
 
 @create_menu.delete("/admin/delate")
-def borrar_categoria(id:str):
+def borrar_categoria(
+    id:str,
+    current_user: Any = Security(get_current_active_user)
+):
     conn.execute(menu1.delete().where(menu1.c.id == id))
     return { 'message': "success"}
 
 
 @create_menu.delete("/platos/delete")
-def borrar_plato(id: int):
+def borrar_plato(
+    id: int,
+    current_user: Any = Security(get_current_active_user)
+):
     conn.execute(platillos.delete().where(platillos.c.id == id))
     return { 'message': "success" }

@@ -1,10 +1,6 @@
-from ctypes import Union
-from datetime import datetime, time, date
 from pathlib import Path
-import re
-from typing import List
-from unittest import result
-from fastapi import APIRouter, status
+from typing import List, Any
+from fastapi import APIRouter, status, Security
 from fastapi.responses import JSONResponse
 from pydantic import FilePath
 from config.db import conn
@@ -16,6 +12,7 @@ from dotenv import dotenv_values
 from models.user import zonas 
 from models.user import reservas_zona_aso
 
+from functions.deps import get_current_active_user
 
 credenciales = dotenv_values(".env")
 
@@ -203,7 +200,11 @@ async def reserva(
 
 
 @create_reserva.post("/admin/reserva") 
-def create_reserva_admin(reserva: Reserva_admin, nombre_zona:List[str]):
+def create_reserva_admin(
+    reserva: Reserva_admin, 
+    nombre_zona:List[str],
+    current_user: Any = Security(get_current_active_user)
+):
 
     new_reserva = {
         "hora1": reserva.hora1,
@@ -242,7 +243,10 @@ def create_reserva_admin(reserva: Reserva_admin, nombre_zona:List[str]):
     return {"message" : 'reserva creada'}
 
 @create_reserva.delete("/admin/delete_reserva")
-def delete_reserva(id: int):
+def delete_reserva(
+    id: int,
+    current_user: Any = Security(get_current_active_user)
+):
     reserve_exists = conn.execute(reservas.select().where(reservas.c.reservas_id == id))
     if not reserve_exists: 
         return JSONResponse(
@@ -256,7 +260,10 @@ def delete_reserva(id: int):
         return {'message': 'Reserva eliminada correctamente'}
 
 @create_reserva.delete("/admin/delete_reserva_admin")
-def delete_reserva(id: int):
+def delete_reserva(
+    id: int,
+    current_user: Any = Security(get_current_active_user)
+):
     reserve_exists = conn.execute(reservas_admin.select().where(reservas_admin.c.id == id))
     if not reserve_exists: 
         return JSONResponse(
@@ -270,8 +277,8 @@ def delete_reserva(id: int):
 
 @create_reserva.get("/reservas")
 def get_reservas(
-  
-    nested: bool
+    nested: bool,
+    current_user: Any = Security(get_current_active_user),
 ):
     if nested:
         reservs_admin = conn.execute(reservas_admin.select()).fetchall()
