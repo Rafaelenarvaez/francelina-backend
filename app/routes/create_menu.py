@@ -2,6 +2,7 @@ import os
 import random
 from typing import Any
 from fastapi import APIRouter, Depends, Security, UploadFile, File, Form, status
+from sqlalchemy import desc
 from pydantic import FilePath
 from fastapi.responses import JSONResponse
 from models.user import menu1
@@ -131,7 +132,7 @@ async def uploadfile_post(
                 'message': 'Extension no permitida'
         })
 
-    ide = random.randint(1,100)
+    ide = uuid4()
     id= str(ide) + "." + extencion
     generated_name = FILEPATH + id
     db_file_name = "/imagenes/galery/" + id
@@ -156,10 +157,18 @@ def get_images():
 
 @create_menu.get("/platos")
 def get_platos(
-    nested: bool
+    nested: bool,
+    paginate: bool,
+    skip: int = 0,
+    limit: int = 100,
 ):
     if nested:
-        menu = conn.execute(menu1.select()).fetchall()
+        if paginate:
+            query = menu1.select().order_by(desc(menu1.c.id)).offset(skip).limit(limit)
+        else:
+            query = menu1.select().order_by(desc(menu1.c.id))
+
+        menu = conn.execute(query).fetchall()
 
         if not menu:
             return []
@@ -180,7 +189,11 @@ def get_platos(
         return menu_lst
     
     else:
-        return conn.execute(platillos.select()).fetchall()
+        if paginate:
+            query = platillos.select().order_by(desc(platillos.c.id)).offset(skip).limit(limit)
+        else:
+            query = platillos.select().order_by(desc(platillos.c.id))
+        return conn.execute(query).fetchall()
 
 
 @create_menu.put("/admin/update_menu")

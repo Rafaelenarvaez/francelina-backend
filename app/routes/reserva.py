@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import List, Any
 from fastapi import APIRouter, status, Security
 from fastapi.responses import JSONResponse
+from sqlalchemy import desc
 from pydantic import FilePath
 from config.db import conn
 from models.user import reservas_admin, reservas_zona_aso, reservas, zonas
@@ -278,10 +279,18 @@ def delete_reserva(
 @create_reserva.get("/reservas")
 def get_reservas(
     nested: bool,
+    paginate: bool,
+    skip: int = 0,
+    limit: int = 100,
     current_user: Any = Security(get_current_active_user),
 ):
     if nested:
-        reservs_admin = conn.execute(reservas_admin.select()).fetchall()
+        if paginate:
+            query = reservas_admin.select().order_by(desc(reservas_admin.c.id)).offset(skip).limit(limit)
+        else:
+            query = reservas_admin.select().order_by(desc(reservas_admin.c.id))
+
+        reservs_admin = conn.execute(query).fetchall()
 
         if not reservs_admin:
             return []
@@ -309,8 +318,11 @@ def get_reservas(
         return reserv_admin_lst
     
     else:
-        return conn.execute(reservas.select()).fetchall()
-
+        if paginate:
+            query = reservas.select().order_by(desc(reservas.c.id)).offset(skip).limit(limit)
+        else:
+            query = reservas.select().order_by(desc(reservas.c.id))
+        return conn.execute(query).fetchall()
 
 
 @create_reserva.get("/mostrar_horas")
