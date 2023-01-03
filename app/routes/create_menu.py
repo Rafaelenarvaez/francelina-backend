@@ -164,9 +164,9 @@ def get_platos(
 ):
     if nested:
         if paginate:
-            query = menu1.select().order_by(desc(menu1.c.id)).offset(skip).limit(limit)
+            query = menu1.select().offset(skip).limit(limit)
         else:
-            query = menu1.select().order_by(desc(menu1.c.id))
+            query = menu1.select()
 
         menu = conn.execute(query).fetchall()
 
