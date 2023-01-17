@@ -198,10 +198,10 @@ def get_platos(
 
 @create_menu.put("/admin/update_menu")
 async def update_menu(
-    ides: str = Form(...),
-    nombre: str = Form(...),
-    precio: str = Form(...),
-    descripcion: str = Form(...),
+    ides: int,
+    nombre: str,
+    precio: str,
+    descripcion: str,
     file:UploadFile=File(...),
     current_user: Any = Security(get_current_active_user)
 ):
@@ -216,8 +216,10 @@ async def update_menu(
 
     ide = uuid4()
 
+    ide = uuid4()
     id= str(ide) + "." + extencion
     generated_name = FILEPATH + id
+    db_file_name = "/imagenes/menu/" + id
     file_content = await file.read()
 
     
@@ -225,15 +227,17 @@ async def update_menu(
         "nombre": nombre, 
         "precio": precio,
         "descripcion": descripcion, 
-        "imagen": generated_name, 
+        "imagen": db_file_name, 
     }
 
     rp = conn.execute(platillos.update().values(new_menu).where(platillos.c.id == ides))
+    # new_dish = conn.execute(platillos.select().where(platillos.c.id == rp)).fetchone()
+    print(rp)
 
     with open (generated_name, "wb") as file:
         file.write(file_content)
     
-    return {'msg': 'Platillo actualizado'}
+    return rp
 
 @create_menu.delete("/admin/delate")
 def borrar_categoria(
