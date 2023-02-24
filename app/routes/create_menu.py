@@ -4,7 +4,6 @@ import imp
 import os
 import random
 from os import getcwd
-from turtle import update
 from fastapi import APIRouter, Depends, Security, UploadFile, File, Form, status
 from pydantic import FilePath
 from fastapi.responses import JSONResponse
@@ -44,7 +43,7 @@ async def create(
     if extencion not in ["png","JPG","jpg","PNG"]:
         return {"status": "error" , "detail": "Extencion no permitida"}
 
-    ide = random.randint(1,100)
+    ide = random.randint(1,100000)
 
     id= str(ide) + "." + extencion
     generated_name = FILEPATH + id
