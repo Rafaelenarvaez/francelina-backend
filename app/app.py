@@ -1,9 +1,5 @@
-from msilib.schema import Directory
 from fastapi import FastAPI
-from routes.user import user
-from routes.auth import auth_routes
-from routes.reserva import create_reserva
-from routes.create_menu import create_menu
+
 
 from routes.router import api_router
 # from config.db import db
