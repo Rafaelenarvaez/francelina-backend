@@ -105,16 +105,16 @@ async def reserva(
         result = conn.execute(reservas.insert().values(new_reserv))
         
     if (reserves_count) >= reserv['capacidad']:
-        conn.execute(reservas_admin.update().values(max_capacity=True))
+        conn.execute(reservas_admin.update().where(reservas_admin.c.id == id).values(max_capacity=True))
 
-    message = MessageSchema(
-           subject="Confirmacion de reserva",
-           recipients=[reserva.email, credenciales["EMAIL"]],  # List of recipients, as many as you can pass 
-          template_body=new_reserv,
-       )
+    # message = MessageSchema(
+    #        subject="Confirmacion de reserva",
+    #        recipients=[reserva.email, credenciales["EMAIL"]],  # List of recipients, as many as you can pass 
+    #       template_body=new_reserv,
+    #    )
    
-    fm = FastMail(conf)
-    await fm.send_message(message, template_name="email.html")
+    # fm = FastMail(conf)
+    # await fm.send_message(message, template_name="email.html")
     return {"message" : "reserva creada exitosamente" }
 
 
@@ -246,16 +246,34 @@ def create_reserva_admin(
 @create_reserva.delete("/admin/delete_reserva")
 def delete_reserva(
     id: int,
+    admin_id: int,
     current_user: Any = Security(get_current_active_user)
 ):
-    reserve_exists = conn.execute(reservas.select().where(reservas.c.reservas_id == id))
-    if not reserve_exists: 
+    reserve_exists = conn.execute(reservas.select().where(reservas.c.id == id)).fetchone()
+    reserve_admin = conn.execute(reservas_admin.select().where(reservas_admin.c.id == admin_id)).fetchone()
+
+    if not reserve_exists and not reserve_admin: 
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={
                 'message': 'Esta reserva no existe'
             })
     else:
+        qr = reservas.select().where(reservas.c.reservas_id == id)
+        reserv_exists = conn.execute(qr).fetchall()
+        
+        reserves_count = 0
+        
+        if reserv_exists:
+            for r in reserv_exists:
+                reserves_count += r['numero_de_personas']
+
+        if (reserves_count - reserve_exists['numero_de_personas']) >= reserve_admin['capacidad']:
+            conn.execute(reservas_admin.update().where(reservas_admin.c.id == id).values(max_capacity=True))
+        else:
+            conn.execute(reservas_admin.update().where(reservas_admin.c.id == id).values(max_capacity=False))
+
+
         conn.execute(reservas.delete().where(reservas.c.id == id))
 
         return {'message': 'Reserva eliminada correctamente'}
