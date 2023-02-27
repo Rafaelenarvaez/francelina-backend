@@ -6,5 +6,5 @@ class Reserva_admin(BaseModel):
     id:Optional[str]
     hora1:time
     hora2:time
-    capacidad:int
     nombre: str
+   
