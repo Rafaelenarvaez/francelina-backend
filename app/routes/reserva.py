@@ -315,7 +315,7 @@ def get_reservas(
     paginate: bool,
     skip: int = 0,
     limit: int = 100,
-    current_user: Any = Security(get_current_active_user),
+    #current_user: Any = Security(get_current_active_user),
 ):
     if nested:
         if paginate:
@@ -327,13 +327,13 @@ def get_reservas(
 
         if not reservs_admin:
             return []
-        
+
         reserv_admin_lst = []
 
         for r in reservs_admin:
 
             reservs = conn.execute(reservas.select().where(reservas.c.reservas_id == r['id']))
-            zones = conn.execute(reservas_zona_aso.select().where(reservas_zona_aso.c.id_reservas_admin == r['id']))
+            #zones = conn.execute(reservas_zona_aso.select().where(reservas_zona_aso.c.id_reservas_admin == r['id']))
 
             if reservs:
                 reserv_obj = {**dict(r), 'reservas': [{**dict(i)} for i in reservs], 'zones': []}
@@ -372,7 +372,7 @@ def get_horas():
 
 
     for r in reservs_admin:
-        qr = reservas_zona_aso.select().where(reservas_zona_aso.c.id_reservas_admin == r['id'])
+        #qr = reservas_zona_aso.select().where(reservas_zona_aso.c.id_reservas_admin == r['id'])
         asso_data = [ dict(i) for i in conn.execute(qr).fetchall()]
 
         reser_admin = {
