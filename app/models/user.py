@@ -90,7 +90,6 @@ class Zonas(Base):
         id = Column(Integer, primary_key=True)
         nombre = Column(String(255))
         capacidad = Column(Integer())
-        max_capacity= Column(Boolean, default=False)
         id_reservas_admin = Column(Integer, ForeignKey('reservas_admin.id', ondelete='CASCADE'))
         relationship('Reservas', cascade="all,delete",backref=backref('zonas', cascade="all,delete"))
         
@@ -128,7 +127,5 @@ class ReservasDia(Base):
     relationship('Reservas', cascade="all,delete", backref=backref('reservas_admin', cascade="all,delete"))
 
 reservasdia = ReservasDia.__table__
-
-
 
 Base.metadata.create_all(engine)
