@@ -20,7 +20,6 @@ reusable_oauth2 = OAuth2PasswordBearer(
 async def get_current_user(
     token: str = Depends(reusable_oauth2)
 ):
-    print(token)
     authenticate_value = f"Bearer"
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -31,7 +30,6 @@ async def get_current_user(
         payload = jwt.decode(
             token, SECRET_KEY, algorithms=[ALGORITHM]
         )
-        print(payload)
         user_id = int(payload['sub'])
         if not user_id:
             raise credentials_exception
@@ -49,7 +47,6 @@ async def get_current_user(
 
     qr = users.select().where(users.c.id == user_id)
     user = conn.execute(qr).fetchone()
-    print(user)
     if not user:
         raise credentials_exception
     

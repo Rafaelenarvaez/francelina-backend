@@ -104,7 +104,6 @@ async def login_access_token(
         users.c.password == form_data.password
     )
     user = conn.execute(qr).fetchone()
-    print(user)
     if not user:
         return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST, 

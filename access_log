@@ -10256,3 +10256,4 @@
  - "GET /.env HTTP/1.0" 404
  - "POST / HTTP/1.0" 404
  - "GET /api/platos?nested=true&paginate=false&skip=0&limit=9999 HTTP/1.0" 500
+ - "GET / HTTP/1.0" 404

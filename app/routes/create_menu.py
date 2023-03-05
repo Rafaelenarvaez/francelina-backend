@@ -1,3 +1,5 @@
+
+
 import os
 import random
 from typing import Any, Union
@@ -231,7 +233,6 @@ async def update_menu(
     
 
     rp = conn.execute(platillos.update().values(new_menu).where(platillos.c.id == ides))
-    print(rp)
 
     if file:
         with open (generated_name, "wb") as file:
