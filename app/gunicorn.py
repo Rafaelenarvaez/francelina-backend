@@ -9,9 +9,9 @@ load_dotenv()
 
 name = "gunicorn config for FastAPI - TutLinks.com"
 
-accesslog = "/home/ubuntu/proyects/francelina-backend/gunicorn-access.log"
+accesslog = "/home/ubuntu/projects/francelina-backend/gunicorn-access.log"
 
-errorlog = "/home/ubuntu/proyects/francelina-backend/gunicorn-error.log"
+errorlog = "/home/ubuntu/projects/francelina-backend/gunicorn-error.log"
 
 
 bind = "0.0.0.0:8000"
@@ -19,7 +19,7 @@ bind = "0.0.0.0:8000"
 
 worker_class = "uvicorn.workers.UvicornWorker"
 
-workers = multiprocessing.cpu_count () * 2 + 1
+workers = 1
 
 worker_connections = 1024
 
