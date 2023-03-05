@@ -13667,3 +13667,17 @@ sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2006, "MySQL se
 [SQL: SELECT menu1.id, menu1.nombre, menu1.descripcion 
 FROM menu1]
 (Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2023-03-05 23:10:57 +0000] [467] [CRITICAL] WORKER TIMEOUT (pid:30750)
+[2023-03-05 23:11:05 +0000] [467] [CRITICAL] WORKER TIMEOUT (pid:30751)
+[2023-03-05 23:11:46 +0000] [467] [WARNING] Worker with pid 30750 was terminated due to signal 9
+[2023-03-05 23:11:46 +0000] [467] [WARNING] Worker with pid 30751 was terminated due to signal 9
+[2023-03-05 23:11:46 +0000] [467] [DEBUG] 1 workers
+[2023-03-05 23:11:46 +0000] [95712] [INFO] Booting worker with pid: 95712
+[2023-03-05 23:11:46 +0000] [467] [DEBUG] 2 workers
+[2023-03-05 23:11:46 +0000] [95714] [INFO] Booting worker with pid: 95714
+[2023-03-05 23:11:57 +0000] [95712] [INFO] Started server process [95712]
+[2023-03-05 23:11:57 +0000] [95712] [INFO] Waiting for application startup.
+[2023-03-05 23:11:57 +0000] [95712] [INFO] Application startup complete.
+[2023-03-05 23:11:57 +0000] [95714] [INFO] Started server process [95714]
+[2023-03-05 23:11:57 +0000] [95714] [INFO] Waiting for application startup.
+[2023-03-05 23:11:57 +0000] [95714] [INFO] Application startup complete.
