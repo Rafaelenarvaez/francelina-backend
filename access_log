@@ -10257,3 +10257,18 @@
  - "POST / HTTP/1.0" 404
  - "GET /api/platos?nested=true&paginate=false&skip=0&limit=9999 HTTP/1.0" 500
  - "GET / HTTP/1.0" 404
+ - "GET /api/get_img HTTP/1.0" 200
+ - "GET /api/get_img HTTP/1.0" 200
+ - "GET /api/platos?nested=true&paginate=false&skip=0&limit=9999 HTTP/1.0" 200
+ - "GET /api/platos?nested=true&paginate=false&skip=0&limit=9999 HTTP/1.0" 200
+ - "GET / HTTP/1.0" 404
+ - "GET /api/platos?nested=true&paginate=false&skip=0&limit=9999 HTTP/1.0" 200
+ - "GET /api/mostrar_horas HTTP/1.0" 500
+ - "POST /api/access-token HTTP/1.0" 200
+ - "GET /api/reserves-flat HTTP/1.0" 500
+ - "GET /api/platos?nested=false&paginate=true&skip=0&limit=5 HTTP/1.0" 200
+ - "GET /api/reservas_dias HTTP/1.0" 500
+ - "POST /api/admin/reserva HTTP/1.0" 422
+ - "GET /api/reservas_dias HTTP/1.0" 500
+ - "POST /api/admin/reserva HTTP/1.0" 422
+ - "GET /api/reservas_dias HTTP/1.0" 500
