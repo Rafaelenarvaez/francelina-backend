@@ -282,7 +282,6 @@ def create_reserva_admin(
     else: 
          for n in nombre_zona:
             result=conn.execute(zonas.insert().values({ 'nombre': n.nombre ,"capacidad":n.capacidad, 'id_reservas_admin':reser_id})).inserted_primary_key[0]
-            print(result)
             zona_id = conn.execute(zonas.select().where(zonas.c.id == result )).fetchone()
             zonas_ids.append(zona_id['id'])
 
@@ -364,7 +363,6 @@ def get_reservas_admin(
 
             count = conn.execute(query).fetchone()
 
-            print(count)
             dia_reserva_lst.append({
                 **d,
                 **count,
@@ -441,7 +439,6 @@ def get_reservas_detalles(
     dia_id: int,
     id_zones: List[int] = Query(None)
 ):
-    print(id_zones)
     if len(id_zones) == 0:
         return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST,
