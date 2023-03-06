@@ -127,7 +127,7 @@ async def reserva(
     
 
 
-@create_reserva.get("/max_capaciti")
+@create_reserva.get("/max_capacity")
 async def reserva(
         id: int,
         id_zone: int,
