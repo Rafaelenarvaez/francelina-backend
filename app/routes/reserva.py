@@ -117,11 +117,11 @@ async def reserva(
     conn.execute(reservas.insert().values(new_reserve))
 
     
-    # MessageSchema(
-    #     subject="Confirmacion de reserva",
-    #     recipients=[reserva.email, credenciales["EMAIL"]],
-    #     template_body=new_reserve,
-    # )
+    MessageSchema(
+        subject="Confirmacion de reserva",
+        recipients=[reserva.email, credenciales["EMAIL"]],
+        template_body=new_reserve,
+    )
 
     return {"message" : "reserva creada exitosamente" }
     
@@ -260,7 +260,7 @@ async def reserva(
 def create_reserva_admin(
     reserva: Reserva_admin, 
     nombre_zona:List[Nombre_zona],
-    #current_user: Any = Security(get_current_active_user)
+    current_user: Any = Security(get_current_active_user)
 ):
     
     new_reserva = {
