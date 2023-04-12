@@ -115,13 +115,16 @@ async def reserva(
     }
 
     conn.execute(reservas.insert().values(new_reserve))
-
     
-    MessageSchema(
-        subject="Confirmacion de reserva",
-        recipients=[reserva.email, credenciales["EMAIL"]],
-        template_body=new_reserve,
+    message= MessageSchema(
+        subject = "Confirmacion de reserva",
+        recipients = [reserva.email, credenciales["EMAIL"]],
+        template_body = new_reserve,
     )
+    fm = FastMail(conf)
+    await fm.send_message(message, template_name="email.html")
+
+    print("el correo es", message.body)
 
     return {"message" : "reserva creada exitosamente" }
     
