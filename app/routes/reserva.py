@@ -121,6 +121,7 @@ async def reserva(
         recipients = [reserva.email, credenciales["EMAIL"]],
         template_body = new_reserve,
     )
+    
     fm = FastMail(conf)
     await fm.send_message(message, template_name="email.html")
 
