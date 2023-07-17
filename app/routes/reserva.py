@@ -103,7 +103,6 @@ async def reserva(
                     'msg': 'Capacidad maxima'
                 })
 
-<<<<<<< HEAD
         new_reserve = conn.execute(reservas.insert().values({
             "nombre": reserva.nombre,
             "apellido": reserva.apellido,
@@ -124,14 +123,6 @@ async def reserva(
         subject="Confirmacion de reserva",
         recipients=[reserva.email, credenciales["EMAIL"]],
         template_body=new_reserve,
-=======
-    conn.execute(reservas.insert().values(new_reserve))
-    
-    message= MessageSchema(
-        subject = "Confirmacion de reserva",
-        recipients = [reserva.email, credenciales["EMAIL"]],
-        template_body = new_reserve,
->>>>>>> 8afa01c233c4470bfe23b6f44793ae50ac0455d6
     )
     
     fm = FastMail(conf)
