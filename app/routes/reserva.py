@@ -118,11 +118,11 @@ async def reserva(
             "nota": reserva.nota,
             "reservas_id": reserver_admin['id'],
         }))
-
-    MessageSchema(
-        subject="Confirmacion de reserva",
-        recipients=[reserva.email, credenciales["EMAIL"]],
-        template_body=new_reserve,
+ 
+    message= MessageSchema(
+        subject = "Confirmacion de reserva",
+        recipients = [reserva.email, credenciales["EMAIL"]],
+        template_body = new_reserve,
     )
     
     fm = FastMail(conf)
