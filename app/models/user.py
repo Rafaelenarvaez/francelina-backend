@@ -67,6 +67,8 @@ class Reservas(Base):
     nota = Column(String(500))
     reservas_id = Column(Integer(), ForeignKey(
         'reservas_admin.id', ondelete='CASCADE'), nullable=False)
+    dia_reserva_id = Column(Integer(), ForeignKey(
+        'reservasdia.id', ondelete='CASCADE'), nullable=False)
 
 
 reservas = Reservas.__table__
@@ -123,5 +125,18 @@ class User(Base):
 
 user = User.__table__
 
+
+class ReservasDia(Base):
+    __tablename__ = 'reservasdia'
+
+    id = Column(Integer, primary_key=True)
+    fecha = Column(String(255))
+    reservas_admin_id = Column(Integer(), ForeignKey(
+        'reservas_admin.id', ondelete='CASCADE'), nullable=False)
+    relationship('Reservas', cascade="all,delete", backref=backref(
+        'reservas_admin', cascade="all,delete"))
+
+
+reservasdia = ReservasDia.__table__
 
 Base.metadata.create_all(engine)
