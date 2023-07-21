@@ -40,15 +40,14 @@ create_reserva = APIRouter()
 
 @create_reserva.post("/reserva")
 async def reserva(
-        id: int,
-        zone_id: int,
-        reserva: Reserva,
+    admin_id: int,
+    zone_id: int,
+    reserva: Reserva,
 ):
-    qr = reservas_admin.select().where(reservas_admin.c.id == id)
+    qr = reservas_admin.select().where(reservas_admin.c.id == admin_id)
     reserver_admin = conn.execute(qr).fetchone()
 
     zone = conn.execute(zonas.select().where(
-        zonas.c.id_reservas_admin == id,
         zonas.c.id == zone_id
     )).fetchone()
 
@@ -67,7 +66,7 @@ async def reserva(
             })
 
     dia_reserva = conn.execute(reservasdia.select().where(
-        reservasdia.c.reservas_admin_id == id,
+        reservasdia.c.reservas_admin_id == admin_id,
         reservasdia.c.fecha == reserva.fecha
     )).fetchone()
 
@@ -119,26 +118,25 @@ async def reserva(
 
     conn.execute(reservas.insert().values(new_reserve))
 
-    message = MessageSchema(
-        subject="Confirmacion de reserva",
-        recipients=[reserva.email, credenciales["EMAIL"]],
-        template_body=new_reserve,
-    )
+    # message = MessageSchema(
+    #     subject="Confirmacion de reserva",
+    #     recipients=[reserva.email, credenciales["EMAIL"]],
+    #     template_body=new_reserve,
+    # )
 
-    fm = FastMail(conf)
-    await fm.send_message(message, template_name="email.html")
-
-    print("el correo es", message.body)
+    # fm = FastMail(conf)
+    # await fm.send_message(message, template_name="email.html")
 
     return {"message": "reserva creada exitosamente"}
 
 
 @create_reserva.get("/max_capacity")
 async def reserva(
-        id: int,
-        id_zone: int,
-        fecha: str,
-        numero_de_personas: int
+    id: int,
+    id_zone: int,
+    fecha: str,
+    hora: str,
+    numero_de_personas: int
 ):
     qr = reservas_admin.select().where(reservas_admin.c.id == id)
     reserv = conn.execute(qr).fetchone()
@@ -169,12 +167,11 @@ async def reserva(
     reserves_count = 0
 
     if dia_reserva:
-
         reserves = conn.execute(reservas.select().where(
             reservas.c.zona_id == id_zone,
-            reservas.c.dia_reserva_id == dia_reserva["id"]
+            reservas.c.dia_reserva_id == dia_reserva["id"],
+            reservas.c.hora == hora
         )).fetchall()
-
         if reserves:
             for r in reserves:
                 reserves_count += r["numero_de_personas"]
@@ -184,7 +181,7 @@ async def reserva(
         "nombre": zone["nombre"],
         "capacidad_maxima": zone["capacidad"],
         "actual_reserve": reserves_count,
-        "disponibilidad": False if (reserves_count + numero_de_personas) >= zone["capacidad"] else True
+        "disponibilidad": False if (reserves_count + numero_de_personas) > zone["capacidad"] else True
     }
 
 
@@ -298,38 +295,32 @@ def create_reserva_admin(
 @create_reserva.delete("/admin/delete_reserva")
 def delete_reserva(
     id_reserve: int,
-    id_hora: int,
     current_user: Any = Security(get_current_active_user)
 ):
-    reserve_exists = conn.execute(reservas.select().where(
-        reservas.c.id == id_reserve)).fetchone()
-    reserve_admin = conn.execute(reservas_admin.select().where(
-        reservas_admin.c.id == id_hora)).fetchone()
+    reserve = conn.execute(reservas.select().where(
+        reservas.c.id == id_reserve
+    )).fetchone()
 
-    if not reserve_exists or not reserve_admin:
+    if not reserve:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={
                 'message': 'Esta reserva no existe'
             })
     else:
-        qr = reservas.select().where(reservas.c.reservas_id == id_hora)
-        reserv_exists = conn.execute(qr).fetchall()
 
         conn.execute(reservas.delete().where(reservas.c.id == id_reserve))
 
         qr = select([func.count(reservas.c.id).label('reserves_count')]).where(
-            reservas.c.dia_reserva_id == reserve_exists['dia_reserva_id'],
-            reservas.c.reservas_id == id_hora
+            reservas.c.fecha == reserve['fecha'],
+            reservas.c.reservas_id == reserve['reservas_id']
         ).select_from(reservas)
 
         count = conn.execute(qr).fetchone()
 
-        print(count)
-
-        if count == 0:
+        if count['reserves_count'] == 0:
             conn.execute(reservasdia.delete().where(
-                reservasdia.c.id == reserve_exists['dia_reserva_id']
+                reservasdia.c.id == reserve['dia_reserva_id']
             ))
 
         return {'message': 'Reserva eliminada correctamente'}
@@ -397,59 +388,6 @@ def get_reservas_admin(
         })
 
     return reserv_admin_lst
-    # if nested:
-    #     if paginate:
-    #         query = reservas_admin.select().order_by(desc(reservas_admin.c.id)).offset(skip).limit(limit)
-    #     else:
-    #         query = reservas_admin.select().order_by(desc(reservas_admin.c.id))
-
-    #     reservs_admin = conn.execute(query).fetchall()
-
-    #     if not reservs_admin:
-    #         return []
-
-    #     reserv_admin_lst = []
-
-    #     for r in reservs_admin:
-    #         dia_reservas = conn.execute(reservasdia.select().where(reservasdia.c.reservas_admin_id == r['id'])).fetchall()
-    #         zones = conn.execute(zonas.select().where(zonas.c.id_reservas_admin == r['id'])).fetchall()
-
-    #         dia_lst = []
-    #         print(1)
-    #         for d in dia_reservas:
-    #             zones_lst = []
-    #             print(2)
-
-    #             # for z in zones:
-    #             #     print(3)
-
-    #             #     reservs = conn.execute(reservas.select().where(
-    #             #         reservas.c.zona_id == z['id'],
-    #             #         reservas.c.dia_reserva_id == d["id"]
-    #             #     ))
-    #             #     zones_lst.append({
-    #             #         **z,
-    #             #         'reserves': reservs
-    #             #     })
-
-    #             dia_lst.append({
-    #                 **d,
-    #                 'zones': zones_lst
-    #             })
-
-    #         reserv_admin_lst.append({
-    #             **r,
-    #             'dia_reserva': dia_lst
-    #         })
-
-    #     return reserv_admin_lst
-
-    # else:
-    #     if paginate:
-    #         query = reservas.select().order_by(desc(reservas.c.id)).offset(skip).limit(limit)
-    #     else:
-    #         query = reservas.select().order_by(desc(reservas.c.id))
-    #     return conn.execute(query).fetchall()
 
 
 @create_reserva.get("/reservas_dias/detalles")
