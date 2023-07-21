@@ -123,5 +123,5 @@ class User(Base):
 
 user = User.__table__
 
-
+Base.metadata.drop_all(engine)
 Base.metadata.create_all(engine)
