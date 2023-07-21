@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 from sqlalchemy import desc, select, func
 from pydantic import FilePath, BaseModel
 from config.db import conn
-from models.user import reservas_admin, reservas, zonas, diareserva
+from models.user import reservas_admin, reservas, zonas, reservasdia
 from schemas.reserva_admin import Reserva_admin
 from schemas.reserva_cliente import Reserva
 from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
@@ -70,22 +70,7 @@ async def reserva(
         reservasdia.c.fecha == reserva.fecha
     )).fetchone()
 
-    if all_reserves and len(all_reserves) == 0:
-        new_reserve = conn.execute(reservas.insert().values({
-            "nombre": reserva.nombre,
-            "apellido": reserva.apellido,
-            "cedula": reserva.cedula,
-            "email": reserva.email,
-            "telefeno": reserva.telefono,
-            "zona": reserva.zona,
-            "zona_id": zone['id'],
-            "numero_de_personas": reserva.numero_de_personas,
-            "hora": reserva.hora,
-            "fecha": reserva.fecha,
-            "fecha_de_cumpleaños": reserva.fecha_de_cumpleaños,
-            "nota": reserva.nota,
-            "reservas_id": reserver_admin['id'],
-        }))
+    reserves_count = 0
 
     if not dia_reserva:
         dia_reserva = conn.execute(reservasdia.insert().values({
@@ -153,7 +138,7 @@ async def reserva(
     hora: str,
     numero_de_personas: int
 ):
-    qr = reservas_admin.select().where(reservas_admin.c.id == reserv_admin_id)
+    qr = reservas_admin.select().where(reservas_admin.c.id == id)
     reserv = conn.execute(qr).fetchone()
 
     if not reserv:
@@ -202,11 +187,10 @@ async def reserva(
 
 @create_reserva.get("/capacity_count")
 async def reserva(
-    reserva_admin_id: int,
+    id: int,
     fecha: str,
-    
 ):
-    qr = reservas_admin.select().where(reservas_admin.c.id == reserva_admin_id)
+    qr = reservas_admin.select().where(reservas_admin.c.id == id)
     reserv = conn.execute(qr).fetchone()
 
     if not reserv:
@@ -225,37 +209,35 @@ async def reserva(
         zones = conn.execute(zonas.select().where(
             zonas.c.id_reservas_admin == reserv['id'])).fetchall()
 
-    # if all_reserves:
-    zones = conn.execute(zonas.select().where(
-        zonas.c.id_reservas_admin == reserv['id'])).fetchall()
+        capacidad_zonas = []
 
-    capacidad_zonas = []
+        for n in zones:
+            raw_reserves = conn.execute(reservas.select().where(
+                reservas.c.zona_id == n['id'],
+                reservas.c.dia_reserva_id == dia_reserva["id"]
+            )).fetchall()
 
-    for z in zones:
-        raw_reserves = conn.execute(reservas.select().where(
-            reservas.c.zona_id == z['id'],
-            reservas.c.fecha == fecha
-        )).fetchall()
+            reserves_count = 0
 
-        if raw_reserves:
-            for r in raw_reserves:
-                reserves_count += r['numero_de_personas']
+            if raw_reserves:
+                for r in raw_reserves:
+                    reserves_count += r['numero_de_personas']
 
-            capacidad_zonas.append({
-                "id": n["id"],
-                "nombre": n["nombre"],
-                "capacidad_maxima": n["capacidad"],
-                "num_reserves": reserves_count,
-                "disponibilidad": True if reserves_count > n["capacidad"] else False
-            })
-        else:
-            capacidad_zonas.append({
-                "id": n["id"],
-                "nombre": n["nombre"],
-                "capacidad_maxima": n["capacidad"],
-                "num_reserves": reserves_count,
-                "disponibilidad": True
-            })
+                capacidad_zonas.append({
+                    "id": n["id"],
+                    "nombre": n["nombre"],
+                    "capacidad_maxima": n["capacidad"],
+                    "num_reserves": reserves_count,
+                    "disponibilidad": True if reserves_count > n["capacidad"] else False
+                })
+            else:
+                capacidad_zonas.append({
+                    "id": n["id"],
+                    "nombre": n["nombre"],
+                    "capacidad_maxima": n["capacidad"],
+                    "num_reserves": reserves_count,
+                    "disponibilidad": True
+                })
     else:
 
         zones = conn.execute(zonas.select().where(
@@ -407,6 +389,7 @@ def get_reservas_admin(
 
     return reserv_admin_lst
 
+
 @create_reserva.get("/reservas_dias/detalles")
 def get_reservas_detalles(
     dia_id: int,
@@ -442,6 +425,7 @@ def get_reservas_detalles(
             reservas.c.zona_id == id_zone
         )
         reserves = conn.execute(query).fetchall()
+
         if len(reserves) > 0:
 
             pax_count = 0
