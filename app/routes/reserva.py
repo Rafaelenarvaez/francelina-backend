@@ -13,6 +13,7 @@ from dotenv import dotenv_values
 from models.user import zonas
 
 from functions.deps import get_current_active_user
+from datetime import timedelta, datetime
 
 credenciales = dotenv_values(".env")
 
@@ -50,12 +51,22 @@ async def reserva(
     zone = conn.execute(zonas.select().where(
         zonas.c.id == zone_id
     )).fetchone()
+    
 
     if not reserver_admin or not zone:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={
                 'msg': 'Esta reserva admin no existe'
+            })
+        
+    hour_limit = datetime.today() - timedelta(hours=4)
+    
+    if hour_limit < reserva.fecha:
+        return JSONResponse(
+            status_code=status.HTTP_406_NOT_ACCEPTABLE,
+            content={
+                'msg': 'Debe reservar cuatro horas antes de la hora señalada'
             })
 
     if reserva.hora > reserver_admin['hora2'] or reserva.hora < reserver_admin['hora1']:
@@ -96,7 +107,7 @@ async def reserva(
         return JSONResponse(
             status_code=status.HTTP_406_NOT_ACCEPTABLE,
             content={
-                'msg': 'Capacidad maxima'
+                'msg': 'Capacidad maxima alcanzada'
             })
 
     new_reserve = {
@@ -413,31 +424,17 @@ def get_reservas_detalles(
             })
 
     reserves_result = {
-        'zones': [],
         'reserves': []
     }
 
-    for id_zone in id_zones:
+    query = reservas.select().where(
+        reservas.c.dia_reserva_id == dia_id,
+        reservas.c.reservas_id == dia['reservas_admin_id'],
+    )
+    reserves = conn.execute(query).fetchall()
+    reserves_result['reserves'] = reserves   
 
-        query = reservas.select().where(
-            reservas.c.dia_reserva_id == dia_id,
-            reservas.c.reservas_id == dia['reservas_admin_id'],
-            reservas.c.zona_id == id_zone
-        )
-        reserves = conn.execute(query).fetchall()
-
-        if len(reserves) > 0:
-
-            pax_count = 0
-
-            for r in reserves:
-                pax_count += r['numero_de_personas']
-
-            reserves_result['zones'].append({
-                'zone_id': id_zone,
-                'reserve_count': pax_count
-            })
-            reserves_result['reserves'] = reserves
+        
 
     return reserves_result
 
