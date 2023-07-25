@@ -52,7 +52,6 @@ async def reserva(
         zonas.c.id == zone_id
     )).fetchone()
     
-
     if not reserver_admin or not zone:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -60,9 +59,9 @@ async def reserva(
                 'msg': 'Esta reserva admin no existe'
             })
         
-    hour_limit = datetime.today() - timedelta(hours=4)
-    
-    if hour_limit < reserva.fecha:
+    hour_limit = datetime.strptime(reserva.fecha + ' ' + reserva.hora, '%d-%m-%Y %H:%M:%S') - timedelta(hours=4)
+
+    if datetime.now() > hour_limit:
         return JSONResponse(
             status_code=status.HTTP_406_NOT_ACCEPTABLE,
             content={
