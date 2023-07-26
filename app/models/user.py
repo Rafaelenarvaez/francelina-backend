@@ -41,7 +41,8 @@ class Platillos(Base):
     nombre = Column(String(255))
     descripcion = Column(String(255))
     precio = Column(Numeric(precision=8, scale=2))
-    categoria_id = Column(Integer(), ForeignKey( 'menu1.id', ondelete="CASCADE"), nullable=False)
+    categoria_id = Column(Integer(), ForeignKey(
+        'menu1.id', ondelete="CASCADE"), nullable=False)
     imagen = Column(String(255), nullable=True)
 
 
@@ -58,13 +59,16 @@ class Reservas(Base):
     telefeno = Column(String(255))
     hora = Column(String(255))
     zona = Column(String(255))
-    zona_id =  Column(Integer(), ForeignKey( 'zonas.id', ondelete='CASCADE'), nullable=False)
+    zona_id = Column(Integer(), ForeignKey(
+        'zonas.id', ondelete='CASCADE'), nullable=False)
     fecha = Column(String(255))
     fecha_de_cumpleaños = Column(String(255))
     numero_de_personas = Column(Integer)
     nota = Column(String(500))
-    reservas_id = Column(Integer(), ForeignKey( 'reservas_admin.id', ondelete='CASCADE'), nullable=False)
-    dia_reserva_id=Column(Integer(), ForeignKey('reservasdia.id', ondelete='CASCADE'), nullable=False)
+    reservas_id = Column(Integer(), ForeignKey(
+        'reservas_admin.id', ondelete='CASCADE'), nullable=False)
+    dia_reserva_id = Column(Integer(), ForeignKey(
+        'reservasdia.id', ondelete='CASCADE'), nullable=False)
 
 
 reservas = Reservas.__table__
@@ -76,23 +80,26 @@ class Reservas_admin(Base):
     nombre = Column(String(255))
     hora1 = Column(Time)
     hora2 = Column(Time)
-    zonas = relationship( 'zonas', secondary='reservas_zona_aso', backref='zonas')
-    relationship('Reservas', cascade="all,delete", backref=backref('reservas_admin', cascade="all,delete"))
-    relationship('ReservasDia', cascade="all,delete", backref=backref('reservas_admin', cascade="all,delete"))
+    zonas = relationship(
+        'zonas', secondary='reservas_zona_aso', backref='zonas')
+    relationship('Reservas', cascade="all,delete", backref=backref(
+        'reservas_admin', cascade="all,delete"))
+    relationship('ReservasDia', cascade="all,delete",
+                 backref=backref('reservas_admin', cascade="all,delete"))
 
 
 reservas_admin = Reservas_admin.__table__
 
 
-
 class Zonas(Base):
-        __tablename__ = 'zonas'
-        id = Column(Integer, primary_key=True)
-        nombre = Column(String(255))
-        capacidad = Column(Integer())
-        id_reservas_admin = Column(Integer, ForeignKey('reservas_admin.id', ondelete='CASCADE'))
-        relationship('Reservas', cascade="all,delete",backref=backref('zonas', cascade="all,delete"))
-        
+    __tablename__ = 'zonas'
+    id = Column(Integer, primary_key=True)
+    nombre = Column(String(255))
+    capacidad = Column(Integer())
+    id_reservas_admin = Column(Integer, ForeignKey(
+        'reservas_admin.id', ondelete='CASCADE'))
+    relationship('Reservas', cascade="all,delete",
+                 backref=backref('zonas', cascade="all,delete"))
 
 
 zonas = Zonas.__table__
@@ -112,7 +119,8 @@ class User(Base):
     id = Column(BigInteger, primary_key=True)
     email = Column(EmailType)
     password = Column(String(75))
-    def __repr__(self):return "<User(id=%s, email=%s)>" % (self.id, self.email)
+    def __repr__(self): return "<User(id=%s, email=%s)>" % (
+        self.id, self.email)
 
 
 user = User.__table__
@@ -122,9 +130,12 @@ class ReservasDia(Base):
     __tablename__ = 'reservasdia'
 
     id = Column(Integer, primary_key=True)
-    fecha =Column(String(255))
-    reservas_admin_id = Column(Integer(), ForeignKey( 'reservas_admin.id', ondelete='CASCADE'), nullable=False)
-    relationship('Reservas', cascade="all,delete", backref=backref('reservas_admin', cascade="all,delete"))
+    fecha = Column(String(255))
+    reservas_admin_id = Column(Integer(), ForeignKey(
+        'reservas_admin.id', ondelete='CASCADE'), nullable=False)
+    relationship('Reservas', cascade="all,delete", backref=backref(
+        'reservas_admin', cascade="all,delete"))
+
 
 reservasdia = ReservasDia.__table__
 
