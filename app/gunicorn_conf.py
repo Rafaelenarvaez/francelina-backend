@@ -6,7 +6,7 @@ bind = 'unix:/home/ubuntu/projects/francelina-backend/app/gunicorn.sock'
 
 # Worker Options
 
-workers = cpu_count() + 1
+workers = 1
 
 worker_class = 'uvicorn.workers.UvicornWorker'
 
