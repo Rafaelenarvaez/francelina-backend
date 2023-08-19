@@ -10,4 +10,3 @@ meta = MetaData()
 
 conn = engine.connect()
 
-# db = databases.Database('postgresql+asyncpg://postgres:@localhost:3306/francelina')
