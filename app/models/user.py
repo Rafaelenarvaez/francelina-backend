@@ -6,7 +6,7 @@ from unicodedata import numeric
 from sqlalchemy import Integer, Table, Column, table, true, ForeignKey, Time, Boolean, BigInteger
 from sqlalchemy_utils.types.email import EmailType
 from sqlalchemy.orm import relationship, declarative_base, backref
-from sqlalchemy.sql.sqltypes import Integer, String, Numeric
+from sqlalchemy.sql.sqltypes import Integer, String, Numeric, Text
 from config.db import meta, engine
 
 
@@ -33,6 +33,18 @@ class Menu1(Base):
 
 
 menu1 = Menu1.__table__
+
+
+class Events(Base):
+    __tablename__ = 'events'
+    id = Column(Integer, primary_key=True)
+    title = Column(String(255))
+    description = Column(String(400))
+    fecha = Column(String(255))
+    zone = Column(String(255))
+    hour = Column(Time)
+
+t_events = Events.__table__
 
 
 class Platillos(Base):
