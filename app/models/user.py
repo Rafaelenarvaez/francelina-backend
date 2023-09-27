@@ -43,7 +43,6 @@ class Platillos(Base):
     precio = Column(Numeric(precision=8, scale=2))
     categoria_id = Column(Integer(), ForeignKey(
         'menu1.id', ondelete="CASCADE"), nullable=False)
-    imagen = Column(String(255), nullable=True)
 
 
 platillos = Platillos.__table__
@@ -138,5 +137,7 @@ class ReservasDia(Base):
 
 
 reservasdia = ReservasDia.__table__
+
+
 
 Base.metadata.create_all(engine)
