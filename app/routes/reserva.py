@@ -51,15 +51,16 @@ async def reserva(
     zone = conn.execute(zonas.select().where(
         zonas.c.id == zone_id
     )).fetchone()
-    
+
     if not reserver_admin or not zone:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={
                 'msg': 'Esta reserva admin no existe'
             })
-        
-    hour_limit = datetime.strptime(reserva.fecha + ' ' + reserva.hora, '%d-%m-%Y %H:%M:%S') - timedelta(hours=4)
+
+    hour_limit = datetime.strptime(
+        reserva.fecha + ' ' + reserva.hora, '%d-%m-%Y %H:%M:%S') - timedelta(hours=4)
 
     if datetime.now() > hour_limit:
         return JSONResponse(
@@ -67,8 +68,10 @@ async def reserva(
             content={
                 'msg': 'Debe reservar cuatro horas antes de la hora señalada'
             })
+    date_stripd = reserva.fecha + ' ' + reserva.hora
+    date_time = datetime.strptime(date_stripd, '%d-%m-%Y %H:%M:%S')
 
-    if reserva.hora > reserver_admin['hora2'] or reserva.hora < reserver_admin['hora1']:
+    if date_time > datetime.combine(datetime.now(), reserver_admin['hora2']) and date_time < datetime.combine(datetime.now(), reserver_admin['hora1']):
         return JSONResponse(
             status_code=status.HTTP_406_NOT_ACCEPTABLE,
             content={
@@ -128,14 +131,14 @@ async def reserva(
 
     conn.execute(reservas.insert().values(new_reserve))
 
-    # message = MessageSchema(
-    #     subject="Confirmacion de reserva",
-    #     recipients=[reserva.email, credenciales["EMAIL"]],
-    #     template_body=new_reserve,
-    # )
+    message = MessageSchema(
+         subject="Confirmacion de reserva",
+         recipients=[reserva.email, credenciales["EMAIL"]],
+        template_body=new_reserve,
+    )
 
-    # fm = FastMail(conf)
-    # await fm.send_message(message, template_name="email.html")
+    fm = FastMail(conf)
+    await fm.send_message(message, template_name="email.html")
 
     return {"message": "reserva creada exitosamente"}
 
@@ -431,9 +434,7 @@ def get_reservas_detalles(
         reservas.c.reservas_id == dia['reservas_admin_id'],
     )
     reserves = conn.execute(query).fetchall()
-    reserves_result['reserves'] = reserves   
-
-        
+    reserves_result['reserves'] = reserves
 
     return reserves_result
 
