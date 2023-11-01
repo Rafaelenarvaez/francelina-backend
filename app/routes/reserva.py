@@ -23,7 +23,7 @@ class Nombre_zona(BaseModel):
     capacidad: int
 
 
-conf = ConnectionConfig(
+""" conf = ConnectionConfig(
     MAIL_USERNAME=credenciales["EMAIL"],
     MAIL_PASSWORD=credenciales["PASS"],
     MAIL_FROM=credenciales["EMAIL"],
@@ -34,7 +34,7 @@ conf = ConnectionConfig(
     USE_CREDENTIALS=True,
     VALIDATE_CERTS=True,
     TEMPLATE_FOLDER=Path(__file__).parent / 'templates',
-)
+) """
 
 create_reserva = APIRouter()
 
