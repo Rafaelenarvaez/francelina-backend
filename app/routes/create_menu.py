@@ -2,7 +2,7 @@
 
 import os
 import random
-from typing import Any, Union
+from typing import Any, Optional, Union
 from fastapi import APIRouter, Depends, Security, UploadFile, File, Form, status
 from sqlalchemy import desc
 from pydantic import FilePath
@@ -20,73 +20,6 @@ from uuid import uuid4
 
 ide = []
 create_menu = APIRouter()
-
-@create_menu.post("/menu")
-async def create_categorias(
-    menu:Menu,
-    current_user: Any = Security(get_current_active_user)
-):
-    new_categoria={
-        "nombre": menu.nombre,
-        "descripcion": menu.descripcion
-    }
-    result =conn.execute(menu1.insert().values(new_categoria))
-    return "success"
-
-@create_menu.post("/create_platillo")
-async def create( 
-    categoria: str,
-    nombre: str,
-    precio: str,
-    descripcion: str,
-    file:UploadFile=File(...),
-    current_user: Any = Security(get_current_active_user)
-):
-    
-    
-    FILEPATH= "./imagenes/menu/"
-    filename=file.filename
-    extencion = filename.split(".")[1]
-
-    if extencion not in ["png","JPG","jpg","PNG"]:
-        return {"status": "error" , "detail": "Extencion no permitida"}
-
-    ide = uuid4()
-
-    id= str(ide) + "." + extencion
-    generated_name = FILEPATH + id
-    db_file_name = "/imagenes/menu/" + id
-    file_content = await file.read()
-    
-
-    qr = menu1.select().where(menu1.c.nombre == categoria)
-    menu = conn.execute(qr).fetchone()
-    
-    if not menu:
-         return JSONResponse(
-            status_code=status.HTTP_404_NOT_FOUND,
-            content={
-                'msg': 'Esta categoria no existe'
-            })
-
-    qr = platillos.select().where(platillos.c.categoria_id == menu['id'])
-
-    new_menu={
-        "nombre": nombre, 
-        "precio": precio,
-        "descripcion": descripcion, 
-        "imagen": db_file_name, 
-        "categoria_id": menu['id']
-    }
-
-    new_dish_id = conn.execute(platillos.insert().values(new_menu)).inserted_primary_key[0]
-    new_dish = conn.execute(platillos.select().where(platillos.c.id == new_dish_id)).fetchone()
-     
-    with open (generated_name, "wb") as file:
-        file.write(file_content)
-    
-    return new_dish
-
 
 @create_menu.delete("/img/delete")
 async def remove_img(

@@ -4,7 +4,7 @@ from typing import Optional
 from datetime import  time
 
 class Reserva_admin(BaseModel):
-    id:Optional[str]
+    id:Optional[str] = None
     hora1:time
     hora2:time
     nombre: str

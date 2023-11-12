@@ -5,12 +5,12 @@ from pydantic import BaseModel, EmailStr, validator
 
 
 class Events(BaseModel):
-    id: Optional[str]
-    title: Optional[str]
-    description: Optional[str]
-    fecha: Optional[str]
-    hour: Optional[time]
-    zone: Optional[str]
+    id: Optional[str] = None
+    title: Optional[str] = None
+    description: Optional[str] = None
+    fecha: Optional[str] = None
+    hour: Optional[time] = None
+    zone: Optional[str] = None
     
 
 class EventsBase(BaseModel):

@@ -5,7 +5,7 @@ from typing import Optional, Union
 from datetime import  time
 
 class Reserva(BaseModel):
-    id:Optional[str]
+    id:Optional[str]  = None
     nombre:str
     apellido : str
     cedula:str

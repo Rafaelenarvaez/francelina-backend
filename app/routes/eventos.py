@@ -11,7 +11,7 @@ events = APIRouter()
 
 
 @events.get("/events")
-def get_events() -> List[Events]:
+def get_events():
     return conn.execute(t_events.select()).fetchall()
 
 
@@ -21,7 +21,7 @@ def get_events() -> List[Events]:
 async def create_event(
     *,
     event_in: EventsBase,
-    # current_user: Any = Security(get_current_active_user)
+    current_user: Any = Security(get_current_active_user)
 ):
     new_event = conn.execute(t_events.insert().values(
         event_in.dict()))
