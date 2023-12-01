@@ -23,7 +23,7 @@ class Nombre_zona(BaseModel):
     capacidad: int
 
 
-""" conf = ConnectionConfig(
+conf = ConnectionConfig(
     MAIL_USERNAME=credenciales["EMAIL"],
     MAIL_PASSWORD=credenciales["PASS"],
     MAIL_FROM=credenciales["EMAIL"],
@@ -34,7 +34,7 @@ class Nombre_zona(BaseModel):
     USE_CREDENTIALS=True,
     VALIDATE_CERTS=True,
     TEMPLATE_FOLDER=Path(__file__).parent / 'templates',
-) """
+)
 
 create_reserva = APIRouter()
 
@@ -131,14 +131,14 @@ async def reserva(
 
     conn.execute(reservas.insert().values(new_reserve))
 
-    # message = MessageSchema(
-    #     subject="Confirmacion de reserva",
-    #     recipients=[reserva.email, credenciales["EMAIL"]],
-    #     template_body=new_reserve,
-    # )
+    message = MessageSchema(
+        subject="Confirmacion de reserva",
+        recipients=[reserva.email, credenciales["EMAIL"]],
+        template_body=new_reserve,
+    )
 
-    # fm = FastMail(conf)
-    # await fm.send_message(message, template_name="email.html")
+    fm = FastMail(conf)
+    await fm.send_message(message, template_name="email.html")
 
     return {"message": "reserva creada exitosamente"}
 
@@ -274,7 +274,7 @@ async def reserva(
 def create_reserva_admin(
     reserva: Reserva_admin,
     nombre_zona: List[Nombre_zona],
-    current_user: Any = Security(get_current_active_user)
+    ##current_user: Any = Security(get_current_active_user)
 ):
 
     new_reserva = {
