@@ -131,54 +131,10 @@ def get_platos(
         return conn.execute(query).fetchall()
 
 
-@create_menu.put("/admin/update_menu")
-async def update_menu(
-    ides: int,
-    nombre: str,
-    precio: str,
-    descripcion: str,
-    file: Union[UploadFile, None] = None,
-    current_user: Any = Security(get_current_active_user)
-):
-    new_menu = {
-        "nombre": nombre, 
-        "precio": precio,
-        "descripcion": descripcion, 
-    }
-
-    if file:
-        FILEPATH= "./imagenes/menu/"
-        filename=file.filename
-        extencion = filename.split(".")[1]
-
-        if extencion not in ["png","jpg"]:
-            return {"status": "error" , "detail": "Extencion no permitida"}
-
-        ide = uuid4()
-
-        ide = uuid4()
-        id= str(ide) + "." + extencion
-        generated_name = FILEPATH + id
-        db_file_name = "/imagenes/menu/" + id
-        file_content = await file.read()
-
-        new_menu['imagen'] = db_file_name
-    
-
-    rp = conn.execute(platillos.update().values(new_menu).where(platillos.c.id == ides))
-
-    if file:
-        with open (generated_name, "wb") as file:
-            file.write(file_content)
-    
-    return rp
-
-
-
 @create_menu.post("/menu")
 async def create_categorias(
     menu:Menu,
-    ##current_user: Any = Security(get_current_active_user)
+    current_user: Any = Security(get_current_active_user)
 ):
     new_categoria={
         "nombre": menu.nombre.lower(),
@@ -193,7 +149,7 @@ async def create(
     nombre: str,
     precio: str,
     descripcion: str,
-    ##current_user: Any = Security(get_current_active_user)
+    current_user: Any = Security(get_current_active_user)
 ):
 
     qr = menu1.select().where(menu1.c.nombre == categoria.lower())
@@ -269,7 +225,7 @@ async def update_menu(
     nombre: str,
     precio: str,
     descripcion: str,
-   ## current_user: Any = Security(get_current_active_user)
+    current_user: Any = Security(get_current_active_user)
 ):
     new_menu = {
         "nombre": nombre, 
@@ -286,7 +242,7 @@ async def update_menu(
 @create_menu.delete("/admin/delate")
 def borrar_categoria(
     id:str,
-   ## current_user: Any = Security(get_current_active_user)
+   current_user: Any = Security(get_current_active_user)
 ):
     conn.execute(menu1.delete().where(menu1.c.id == id))
     return { 'message': "success"}
@@ -295,7 +251,7 @@ def borrar_categoria(
 @create_menu.delete("/platos/delete")
 def borrar_plato(
     id: int,
-   ## current_user: Any = Security(get_current_active_user)
+   current_user: Any = Security(get_current_active_user)
 ):
     conn.execute(platillos.delete().where(platillos.c.id == id))
     return { 'message': "success" }
