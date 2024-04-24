@@ -24,7 +24,7 @@ create_menu = APIRouter()
 @create_menu.post("/menu")
 async def create_categorias(
     menu:Menu,
-    current_user: Any = Security(get_current_active_user)
+    ##current_user: Any = Security(get_current_active_user)
 ):
     new_categoria={
         "nombre": menu.nombre,
@@ -39,25 +39,8 @@ async def create(
     nombre: str,
     precio: str,
     descripcion: str,
-    file:UploadFile=File(...),
-    current_user: Any = Security(get_current_active_user)
+    ##current_user: Any = Security(get_current_active_user)
 ):
-    
-    
-    FILEPATH= "./imagenes/menu/"
-    filename=file.filename
-    extencion = filename.split(".")[1]
-
-    if extencion not in ["png","JPG","jpg","PNG"]:
-        return {"status": "error" , "detail": "Extencion no permitida"}
-
-    ide = uuid4()
-
-    id= str(ide) + "." + extencion
-    generated_name = FILEPATH + id
-    db_file_name = "/imagenes/menu/" + id
-    file_content = await file.read()
-    
 
     qr = menu1.select().where(menu1.c.nombre == categoria)
     menu = conn.execute(qr).fetchone()
@@ -75,23 +58,20 @@ async def create(
         "nombre": nombre, 
         "precio": precio,
         "descripcion": descripcion, 
-        "imagen": db_file_name, 
         "categoria_id": menu['id']
     }
 
     new_dish_id = conn.execute(platillos.insert().values(new_menu)).inserted_primary_key[0]
     new_dish = conn.execute(platillos.select().where(platillos.c.id == new_dish_id)).fetchone()
-     
-    with open (generated_name, "wb") as file:
-        file.write(file_content)
+   
     
     return new_dish
 
-
+""" 
 @create_menu.delete("/img/delete")
 async def remove_img(
     id: int,
-    current_user: Any = Security(get_current_active_user)
+   ## current_user: Any = Security(get_current_active_user)
 ):
     qr = galeria.select().where(galeria.c.id == id)
     img = conn.execute(qr).fetchone()
@@ -117,14 +97,13 @@ async def remove_img(
 @create_menu.post("/uploadfile/galeria")
 async def uploadfile_post(
     file:UploadFile=File(...),
-    current_user: Any = Security(get_current_active_user)
+   ## current_user: Any = Security(get_current_active_user)
 ):
 
     FILEPATH= "./imagenes/galery/"
     filename=file.filename
     extencion = filename.split(".")[1]
 
-    
 
     if extencion not in ["png","jpg"]:
 
@@ -155,7 +134,7 @@ async def uploadfile_post(
 @create_menu.get("/get_img")
 def get_images():
         return [dict(i) for i in conn.execute(galeria.select()).fetchall()]
-
+ """
 
 @create_menu.get("/platos")
 def get_platos(
@@ -204,8 +183,7 @@ async def update_menu(
     nombre: str,
     precio: str,
     descripcion: str,
-    file: Union[UploadFile, None] = None,
-    current_user: Any = Security(get_current_active_user)
+   ## current_user: Any = Security(get_current_active_user)
 ):
     new_menu = {
         "nombre": nombre, 
@@ -213,39 +191,16 @@ async def update_menu(
         "descripcion": descripcion, 
     }
 
-    if file:
-        FILEPATH= "./imagenes/menu/"
-        filename=file.filename
-        extencion = filename.split(".")[1]
-
-        if extencion not in ["png","jpg"]:
-            return {"status": "error" , "detail": "Extencion no permitida"}
-
-        ide = uuid4()
-
-        ide = uuid4()
-        id= str(ide) + "." + extencion
-        generated_name = FILEPATH + id
-        db_file_name = "/imagenes/menu/" + id
-        file_content = await file.read()
-
-        new_menu['imagen'] = db_file_name
-    
-
     rp = conn.execute(platillos.update().values(new_menu).where(platillos.c.id == ides))
 
-    if file:
-        with open (generated_name, "wb") as file:
-            file.write(file_content)
     
     return rp
-
 
 
 @create_menu.delete("/admin/delate")
 def borrar_categoria(
     id:str,
-    current_user: Any = Security(get_current_active_user)
+   ## current_user: Any = Security(get_current_active_user)
 ):
     conn.execute(menu1.delete().where(menu1.c.id == id))
     return { 'message': "success"}
@@ -254,7 +209,7 @@ def borrar_categoria(
 @create_menu.delete("/platos/delete")
 def borrar_plato(
     id: int,
-    current_user: Any = Security(get_current_active_user)
+   ## current_user: Any = Security(get_current_active_user)
 ):
     conn.execute(platillos.delete().where(platillos.c.id == id))
     return { 'message': "success" }

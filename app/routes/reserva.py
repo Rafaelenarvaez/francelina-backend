@@ -23,7 +23,7 @@ class Nombre_zona(BaseModel):
     capacidad: int
 
 
-conf = ConnectionConfig(
+""" conf = ConnectionConfig(
     MAIL_USERNAME=credenciales["EMAIL"],
     MAIL_PASSWORD=credenciales["PASS"],
     MAIL_FROM=credenciales["EMAIL"],
@@ -34,7 +34,7 @@ conf = ConnectionConfig(
     USE_CREDENTIALS=True,
     VALIDATE_CERTS=True,
     TEMPLATE_FOLDER=Path(__file__).parent / 'templates',
-)
+) """
 
 create_reserva = APIRouter()
 
@@ -274,7 +274,7 @@ async def reserva(
 def create_reserva_admin(
     reserva: Reserva_admin,
     nombre_zona: List[Nombre_zona],
-    current_user: Any = Security(get_current_active_user)
+    ##current_user: Any = Security(get_current_active_user)
 ):
 
     new_reserva = {
@@ -308,7 +308,7 @@ def create_reserva_admin(
 @create_reserva.delete("/admin/delete_reserva")
 def delete_reserva(
     id_reserve: int,
-    current_user: Any = Security(get_current_active_user)
+    ##current_user: Any = Security(get_current_active_user)
 ):
     reserve = conn.execute(reservas.select().where(
         reservas.c.id == id_reserve
@@ -342,7 +342,7 @@ def delete_reserva(
 @create_reserva.delete("/admin/delete_reserva_admin")
 def delete_reserva(
     id: int,
-    current_user: Any = Security(get_current_active_user)
+    ##current_user: Any = Security(get_current_active_user)
 ):
     reserve_exists = conn.execute(
         reservas_admin.select().where(reservas_admin.c.id == id))
