@@ -67,7 +67,6 @@ async def create(
     
     return new_dish
 
-""" 
 @create_menu.delete("/img/delete")
 async def remove_img(
     id: int,
@@ -134,7 +133,7 @@ async def uploadfile_post(
 @create_menu.get("/get_img")
 def get_images():
         return [dict(i) for i in conn.execute(galeria.select()).fetchall()]
- """
+
 
 @create_menu.get("/platos")
 def get_platos(
